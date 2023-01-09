@@ -64,7 +64,7 @@ public class Ex05_nested_loop {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex04();
 	}
 
 }
