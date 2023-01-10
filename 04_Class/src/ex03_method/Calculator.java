@@ -2,9 +2,10 @@ package ex03_method;
 
 public class Calculator {
 
+	// Car 와 Calculator를 이해하면 좋겠다. CoffeeMachine도 시간 나면 ㄱㄱ
+	
 	// 메소드 (함수) : 어떤 기능을 만든다고 생각.
 	// 계산기의 기능을 만든다.
-	// Car 와 Calculator를 이해하면 좋겠다. CoffeeMachine도 시간 나면 ㄱㄱ
 	
 	/*
 		메소드 형식
@@ -26,7 +27,7 @@ public class Calculator {
 		메소드의 4가지 형식
 		
 		1. 반환값 X, 인수 X : 반환값이 없고, 전달되는 인수가 없을 때
-			void : 반환 타입이 없다는 키워드 (return이라는 문장자체가 없다)			method();
+			void : 반환 타입이 없다는 키워드			method();
 			void method() {    // 인수가 없으니 매개변수 자리 비워둔다.
 				메소드 본문
 			}
@@ -43,14 +44,14 @@ public class Calculator {
 			}
 		
 		4. 반환값 O, 인수 O															int a = 0;
-		 	int method(int arg) {													int result;
-		 		메소드 본문															result = method(a);
-		 		return 반환값
+		 	int method(int arg) {													int result;				
+		 		메소드 본문															result = method(a);		int result = method(a);
+		 		return 반환값																		    =>반환타입 변수 = method(인자)
 		 	}
 	*/
 	
 	
-	// addition 메소드 정의
+	// addition 메소드 정의 (반환값 O, 인수 O)
 	double addition(double a, double b) { // double a, double b : 매개변수
 		return a + b;
 	}
