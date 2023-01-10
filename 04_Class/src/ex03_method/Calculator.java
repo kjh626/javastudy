@@ -27,7 +27,7 @@ public class Calculator {
 		메소드의 4가지 형식
 		
 		1. 반환값 X, 인수 X : 반환값이 없고, 전달되는 인수가 없을 때
-			void : 반환 타입이 없다는 키워드			method();
+			void : 반환 타입이 없다는 키워드										method();
 			void method() {    // 인수가 없으니 매개변수 자리 비워둔다.
 				메소드 본문
 			}
