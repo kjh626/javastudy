@@ -9,9 +9,48 @@ public class Ex05 {
 	
 	public static void ex05() {
 		
+		int total1 = 0;
+		int total2 = 0;
+		int count = 100;
+		
+		for(int a = 1; a <= count; a++) {
+			if(a % 2 == 0) {
+				total1 += a;
+				if(a == count) {
+					System.out.println("짝수 합 : " + total1);
+				}
+			}
+			else {
+				total2 += a;
+				if(a == count - 1) {
+					System.out.println("홀수 합 : " + total2);
+				}
+			}
+		}
+		
+		/*
+		for(int a = 1; a <= count; a++) {
+			if(a % 2 == 0) {
+				total1 += a;
+				if(a == count) {
+					System.out.println("짝수 합 : " + total1);
+				}
+			}
+		}
+		
+		for(int b = 1; b <= count; b++) {
+			if(b % 2 == 1) {
+				total2 += b;
+				if(b == count - 1) {
+					System.out.println("홀수 합 : " + total2);
+				}
+			}
+		}
+		*/
+		
 	}
 	
 	public static void main(String[] args) {
-		
+		ex05();
 	}
 }

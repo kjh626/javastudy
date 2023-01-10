@@ -15,7 +15,6 @@ public class Ex03 {
 			for(int n = 1; n <=9; n++) {
 				System.out.println(dan + " x " + n + " = " + (dan * n));
 				if(dan == 5 && n == 5) {
-					System.out.println(dan + " x " + n + " = " + (dan * n));
 					return;
 				}
 			}
