@@ -4,6 +4,7 @@ public class Calculator {
 
 	// 메소드 (함수) : 어떤 기능을 만든다고 생각.
 	// 계산기의 기능을 만든다.
+	// Car 와 Calculator를 이해하면 좋겠다. CoffeeMachine도 시간 나면 ㄱㄱ
 	
 	/*
 		메소드 형식

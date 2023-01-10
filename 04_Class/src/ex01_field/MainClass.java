@@ -4,7 +4,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		
-		// User 타입의 객체 생성
+		// User 타입의 객체 선언
 		User user1;
 		
 		// User 타입의 객체 생성
