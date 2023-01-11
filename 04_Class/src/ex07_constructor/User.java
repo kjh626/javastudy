@@ -12,10 +12,10 @@ public class User {
 		pw = "1234";
 	}
 	
-	User(String userId, String userPw) {
+	User(String userId, String userPw) { 
 		 id = userId;
 		 pw = userPw;
-	}
+	}  // 생성자가 2개
 	
 	
 	

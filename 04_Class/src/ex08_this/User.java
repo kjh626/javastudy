@@ -28,7 +28,7 @@ public class User {
 	
 	void info() {
 		System.out.println("아이디 : " + id);
-		System.out.println("비밀번호 : " + pw);
+		System.out.println("비밀번호 : " + pw); // 메인의 "admin", "123456" -> 생성자 User에 전달, "admin", "123456"를 (필드의) this.id, this.pw에 전달 
 	}
 	
 }

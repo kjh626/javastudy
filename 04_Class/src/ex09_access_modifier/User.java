@@ -28,7 +28,7 @@ public class User {
 	}
 	
 	public String getId() { // 반환값 O, 인수 X
-		return id;		// id를 반환시켜준다.
+		return id;		// id를 반환시켜준다.(메인의 user.getId()로 반환)
 	}
 	
 	public void setPw(String pw) {
