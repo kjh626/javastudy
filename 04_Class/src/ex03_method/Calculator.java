@@ -46,7 +46,7 @@ public class Calculator {
 		4. 반환값 O, 인수 O															int a = 0;
 		 	int method(int arg) {													int result;				
 		 		메소드 본문															result = method(a);		int result = method(a);
-		 		return 반환값																		    =>반환타입 변수 = method(인자)
+		 		return 반환값																		  =>(반환타입) (변수) = method(인자)
 		 	}
 	*/
 	

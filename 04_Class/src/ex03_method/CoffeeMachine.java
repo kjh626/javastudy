@@ -26,7 +26,7 @@ public class CoffeeMachine { // 돈을 넣으면 커피가 나온다.
 		CoffeeAndChange cnc = new CoffeeAndChange();
 		cnc.coffee = coffee; 		// 어떤 커피, 잔돈 얼마
 		cnc.change = money - price;
-		return cnc;
+		return cnc;		// 이 cnc값은 메인의 coffeeMachine.buyCoffee(1000, 1)로 넘어간다. coffeeMachine.buyCoffee(1000, 1)는 변수 coffeeAndChange에 저장됨
 	}
 	
 }
