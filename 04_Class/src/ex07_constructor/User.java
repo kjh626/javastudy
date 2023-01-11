@@ -17,9 +17,6 @@ public class User {
 		 pw = userPw;
 	}  // 생성자가 2개
 	
-	
-	
-	
 	// 메소드
 	void info() {
 		System.out.println("아이디 : " + id);
