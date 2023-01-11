@@ -19,7 +19,7 @@ public class CoffeeMachine { // 돈을 넣으면 커피가 나온다.
 			return cnc;				// return 치고  cnc를 쳐야함!
 		}
 		
-		String coffee = menu[choice - 1]; // 메뉴, 가격.  choice 1,2,3 - 1 => 배열 0,1,2로 
+		String coffee = menu[choice - 1]; // 메뉴, 가격.  choice 1,2,3 - 1 => 배열 [0],[1],[2]로 
 		
 		moneyPot += price;
 		

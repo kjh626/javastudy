@@ -18,9 +18,9 @@ public class MainClass {
 		
 		CoffeeMachine coffeeMachine = new CoffeeMachine();	// 객체 선언 + 생성
 		
-		CoffeeAndChange coffeeAndChange = coffeeMachine.buyCoffee(1000, 1);		// 메소드 호출 CoffeeMachine 메소드에서 return된 cnc값은 메인의 coffeeMachine.buyCoffee(1000, 1)로 넘어간다.
-		System.out.println(coffeeAndChange.coffee);								// coffeeMachine.buyCoffee(1000, 1)는 변수 coffeeAndChange에 저장됨
-		System.out.println(coffeeAndChange.change);
+		CoffeeAndChange coffeeAndChange = coffeeMachine.buyCoffee(1000, 1);		// 메소드 호출 -> CoffeeMachine 메소드에서 return된 cnc값(cnc.coffee, cnc.change값)은 
+		System.out.println(coffeeAndChange.coffee);								// 메인의 coffeeMachine.buyCoffee(1000, 1)로 넘어간다.
+		System.out.println(coffeeAndChange.change);								// coffeeMachine.buyCoffee(1000, 1)는 변수 CoffeeAndChange클래스 타입의 coffeeAndChange에 저장됨
 		
 		System.out.println(coffeeMachine.moneyPot);
 		
@@ -46,7 +46,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex02();
 	}
 
 }
