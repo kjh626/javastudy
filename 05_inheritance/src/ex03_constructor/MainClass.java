@@ -4,7 +4,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		
-		Student student = new Student(); // Pesrson생성자가 왜 나오지? 의심
+		Student student = new Student(); // Pesrson 생성자가 왜 나오지? 의심
 		
 		/************************************/
 		
