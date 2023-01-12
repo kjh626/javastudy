@@ -12,10 +12,10 @@ public class MainClass {
 		MyMath yourMath = new MyMath();
 		System.out.println(yourMath.PI);
 	
-		// static 요소는 클래스를 이용해서 호출하는 것이 권장이다.
+		// static 요소는 클래스를 이용해서 호출하는 것이 권장이다.(객체 없이)
 		System.out.println(MyMath.PI);
 
-		System.out.println(myMath.getCircleArea(1.5));
+		System.out.println(MyMath.getCircleArea(1.5));
 		
 		System.out.println(MyMath.max(1.1, 2.2, 3,3));
 		System.out.println(MyMath.max(1.1, 2.2, 3.3, 4.4));
