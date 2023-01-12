@@ -18,7 +18,6 @@ public class Gun {
 	public String getModel() {
 		return model;
 	}
-	
 	public void setModel(String model) {
 		this.model = model;
 	}
@@ -26,7 +25,6 @@ public class Gun {
 	public int getBullet() {
 		return bullet;
 	}
-	
 	public void setBullet(int bullet) {
 		this.bullet = bullet;
 	}

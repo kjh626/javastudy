@@ -26,7 +26,7 @@ public class Student extends Person {
 	// 필드
 	private String school;
 	
-	// 생성자 - 메뉴 - Source - Generate Constructor ~ Field - 맨 위에서 생성자 고를 수도 있다.
+	// 생성자 -> 메뉴 - Source - Generate Constructor ~ Field - 맨 위에서 생성자 고를 수도 있다.
 	public Student(String name, String school) {
 		super(name);
 		this.school = school;
