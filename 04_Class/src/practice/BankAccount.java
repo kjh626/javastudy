@@ -33,8 +33,8 @@ public class BankAccount {
 		return money;
 	}
 	
-	// 이체
-	public void tranfer(BankAccount other, long money) {
+	// 이체		// BankAccount 클래스 타입의 other 객체
+	public void transfer(BankAccount other, long money) {
 		// 1. 내 통장에서 money 출금 : withdrawal(money)
 		// 2. 상대 통장에 실제로 내 통장에서 출금된 금액 입금 : other.deposit(withdrawal(money))
 		other.deposit(withdrawal(money));
