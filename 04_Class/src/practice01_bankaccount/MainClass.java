@@ -1,8 +1,9 @@
-package practice;
+package practice01_bankaccount;
 
-public class PracticeClass {
+public class MainClass {
 
 	public static void main(String[] args) {
+
 		BankAccount myAcc = new BankAccount("010-1111-1111", 50_000);
 		BankAccount yourAcc = new BankAccount("010-9999-9999", 100_000);
 		
@@ -10,6 +11,7 @@ public class PracticeClass {
 		
 		myAcc.inquiry();
 		yourAcc.inquiry();
+		
 	}
-	
+
 }

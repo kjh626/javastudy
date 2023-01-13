@@ -13,7 +13,8 @@ public class MainClass {
 		// 2) 계속 10으로 나눠가면서 쪼개도 된다.
 		// 3) 안 배운 방법 중 1234567을 "1234567"로 바꿔서 처리하는 방법이 있음.
 		
-		/*	// 길이가 정해져 있으면 이 방법이 좋다.
+		/*	
+		// 1) 길이가 정해져 있으면 이 방법이 좋다.
 			int number = 1234567
 			if(number / 1000000 % 2 == 1) {
 				System.out.println("남자입니다.");
@@ -23,7 +24,7 @@ public class MainClass {
 		*/
 		
 		/*
-		// 길이가 정해지지 않았을 때
+		// 2) 길이가 정해지지 않았을 때
 		int number = 1234567;
 			
 		while(number >= 10) {
@@ -35,7 +36,7 @@ public class MainClass {
 			System.out.println("여자입니다.");
 		}
 		*/
-		
+		// 3)
 		int number = 1234567;
 		
 		String strNumber = number + "";		// {'1', '2', '3', '4', '5', '6', '7'} 문자열로 저장하면 배열처럼 된다
@@ -138,7 +139,7 @@ public class MainClass {
 	// 합계는 6입니다.
 	public static void q6() {
 		int total = 0;
-		int[] arr = {1, -1, -2, 2, 3, -3};		// 마지막요소 (-3)를 빼내서 쓸 때도 있다. 길이 - 1 해서 쓰면 된다. (arr.length -1)
+		int[] arr = {1, -1, -2, 2, 3, -3};		// 마지막요소[](-3)를 빼내서 쓸 때도 있다. 길이 - 1 해서 쓰면 된다. (arr.length -1)
 		
 		// 1)
 		for(int i = 0; i < arr.length; i++) {
@@ -231,13 +232,15 @@ public class MainClass {
 	public static void q9() {
 		boolean condition1 = false;  // 일의 자리가 3의 배수인가?
 		boolean condition2 = false;  // 십의 자리가 3의 배수인가?
-		// 십의 자리는 몫으로 일의 자리는 나머지로 나타낼 수도 있다.
+		// 십의 자리는 몫으로 일의 자리는 나머지로 나타낼 수 있다.
 		
 		for(int n = 1; n <= 100; n++) {
 			int one = n % 10;							// n을 10으로 나눴을 때의 나머지 (123456789)
 			condition1 = one % 3 == 0 && one != 0;		// 일의 자리가 3의 배수일 때를 나타냄  n % 10 (나머지가) 3으로 나눴을 때 0이면 = 3, 6, 9 -> 이 때 false다.
-			int ten = n / 10;							// 몫을 구함
+			
+			int ten = n / 10;							// 몫을 구함. 몫이 3,6,9
 			condition2 = ten % 3 == 0 && ten != 0;		// 십의 자리가 3의 배수일 때를 나타냄
+			
 			if(condition1 && condition2) {	// 둘 다 3의 배수이면
 				System.out.print("짝짝" + "\t");
 			} else if(condition1 || condition2) {
