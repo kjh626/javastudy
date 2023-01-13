@@ -14,7 +14,7 @@ public class Soldier {
 	
 	/*
 	// 객체를 꼭 생성자에서 new Gun()해서 생성해줄 필요는 없다.
-	//	이렇게 getter setter 이용해서 메인클래스에서 셋으로 new Gun()해줘도 됨.
+	//	이렇게 getter setter 이용해서 메인클래스에서 set으로 new Gun()해줘도 됨.
 	public Gun getGun() {
 		return gun;
 	}

@@ -30,7 +30,7 @@ public class BankAccount {
 			return 0;
 		}
 		balance -= money;
-		return money;
+		return money;		// 출금을 하면 받아야 할 것은 money
 	}
 	
 	// 이체		// BankAccount 클래스 타입의 other 객체
