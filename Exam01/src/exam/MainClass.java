@@ -208,6 +208,7 @@ public class MainClass {
 	// 예시
 	// 가장 높은 점수를 받은 사람은 정숙입니다.
 	public static void q10() {
+		
 		String[] names = {"철수", "영희", "정숙", "상철", "미희"};
 		int[] scores = {50, 60, 90, 80, 70};
 		int max = 0;
