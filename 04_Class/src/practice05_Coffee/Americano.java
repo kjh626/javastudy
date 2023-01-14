@@ -12,15 +12,31 @@ public class Americano {
 	
 	// 생성자
 	public Americano(int shotCount, int extraWater) {
-		super();
+		cups = new Espresso[shotCount];
 		this.shotCount = shotCount;
 		this.extraWater = extraWater;
 	}
 	
+	// 샷 추가 addEspresso 메소드
+	public void addEspresso(Espresso espresso) {
+		if(idx == shotCount) {
+			System.out.println("더 이상 샷을 추가할 수 없습니다.");
+			return;
+		}
+		cups[idx++] = espresso;
+	}
 	
 	// 조회 info 메소드
 	public void info() {
-		System.out.println();  // 커피 원두 원산지, 에스프레소 샷 정보 등 조회
+		int totalWater = 0;
+		for(int i = 0; i < cups.length; i++) {
+			System.out.println("◁◁◁ " + (i + 1) + "번째 샷 정보 ▷▷▷");
+			cups[i].info();
+			totalWater += cups[i].getWater();
+		}
+		totalWater += extraWater;
+		System.out.println("아메리카노 총 ml : " + totalWater + "ml");  // 커피 원두 원산지, 에스프레소 샷 정보 등 조회
 	}
+	
 
 }

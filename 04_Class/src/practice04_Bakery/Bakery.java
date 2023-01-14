@@ -20,13 +20,21 @@ public class Bakery {
 	// 구매자에게 돈을 받는다. 구매자에게 빵과 잔돈을 준다.
 	public BreadAndChange sell(int money) {
 		
+		// 판매할 빵의 개수
+		int sellBread = money / breadPrice;
+		
+		// 잔돈
+		int change = money % breadPrice;
+		
+		// 고객에게 돌려 줄 BreadAndChange 객체 생성
+		BreadAndChange bnc = new BreadAndChange(sellBread, change);
 				
-		this.bakeryMoney = bakeryMoney + (breadPrice * 구매한 빵);
-		this.breadCount -= 구매한 빵;
-		잔돈 = money - (breadPrice * 구매한 빵)
+		// Bakery 판매처리 (빵은 줄었고, 돈은 늘었다.)
+		breadCount -= sellBread;
+		bakeryMoney += (money - change);
 		
-		return 빵의 개수 잔돈;
-		
+		// 고객에게 빵과 잔돈 전달
+		return bnc;
 	}
 	
 	// 판매 현황 메소드

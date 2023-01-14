@@ -10,7 +10,6 @@ public class Espresso {
 	
 	// 생성자
 	public Espresso(CoffeeBean coffeeBean, int water) {
-		super();
 		this.coffeeBean = coffeeBean;
 		this.water = water;
 	}
@@ -31,6 +30,11 @@ public class Espresso {
 	
 	public void setWater(int water) {
 		this.water = water;
+	}
+	
+	public void info() {
+		coffeeBean.info();
+		System.out.println("물 : " + water + "ml");
 	}
 	
 }
