@@ -16,30 +16,29 @@ public class Watch {
 	
 	// 메소드
 	public void addHour(int hour) {
-		if(hour >= 24) {
-			this.hour += hour % 24; 
+		if(hour < 0) {
 			return;
 		}
 		this.hour += hour;
+		this.hour %= 24; 	// hour를 0 ~ 24으로 만들어 주는 코드
 	}
 	
 	public void addMinute(int minute) {
-		if(minute >= 60) {
-			this.hour = hour + (minute / 60);
-			this.minute += minute % 60; 
+		if(minute < 0) {
 			return;
 		}
 		this.minute += minute;
+		addHour(this.minute / 60);	// 몇 시간이 추가되었는 지는 addHour에 맡기자.
+		this.minute %= 60; 	// minute을 0 ~ 59로 만들어 주는 코드
 	}
 	
 	public void addSecond(int second) {
-		if(second >= 3600) {
-			this.hour = hour + (second / 3600);
-			this.minute += (second - 3600) / 60;  
-		} else {
-			this.minute = second / 60;
+		if(second < 0) {
+			return;
 		}
-		this.second += second % 60;
+		this.second += second;
+		addMinute(this.second / 60);	// 몇 분이 추가되었는 지는 addMinute에 맡기자.
+		this.second %= 60;	// second를 0 ~ 59로 만들어 주는 코드
 	}
 	
 	public void see() {
