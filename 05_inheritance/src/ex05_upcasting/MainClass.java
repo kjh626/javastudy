@@ -27,7 +27,7 @@ public class MainClass {
 		Person person;
 		
 		// 자식 객체 생성
-		person = new Student();
+		person = new Student(); // 만든 것은 자식 객체. 자식을 부모 타입에 저장하는 것
 		// 하나의 코드(person)가 다른 일(2개 이상)을 할 수 있다. => 다형성
 		
 		// 메소드 호출 확인하기
