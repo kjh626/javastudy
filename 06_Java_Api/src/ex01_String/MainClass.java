@@ -41,11 +41,11 @@ public class MainClass {
 	        |-------|
 	   str2 | 0x456 |
 	        |-------|
-	   		|  ...  |
+	        |  ...  |
 	        |-------|
 	        |"hello"| 0x123 
 	        |-------|
-	   		|  ...  |
+	        |  ...  |
 	        |-------|
 	        |"hello"| 0x456
 	        |-------|
@@ -227,8 +227,93 @@ public class MainClass {
 		System.out.println(str.toUpperCase());
 		System.out.println(str.toLowerCase());
 		
+	} 
+	
+	public static void trim() {
+		
+		// trim
+		// 문자열의 앞뒤에 포함된 공백 문자(스페이스, 탭, 엔터 등)를 제거
+		// 주로 파일 이름 읽을 때 쓸 수 있음.
+		
+		String str = "   hahaha   hohoho   ";
+		
+		System.out.println("(" + str + ")");
+		System.out.println("(" + str.trim() + ")");	// 중간 거는 안 건드림.
+		
 	}
 	
+	public static void replace() {
+		
+		// replace
+		// 기존 문자열을 새로운 문자열로 변환한 결과를 반환
+		
+		// replace 사용법
+		// replace(String str1, String str2)
+		// 모든 str1을 str2로 변환
+		
+		String str = "best of the best";
+		String result = str.replace("best", "worst");
+		System.out.println(result);
+		
+		// replaceAll => 잘 모르니까 쓰지마라. replace 써라
+		// 정규식 패턴(Regular Expression)을 만족하는 부분을 변환한 결과를 반환
+		// 정규식 패턴의 예) [0-9] [a-z] [0-9a-z] [0-9a-z]{4,20}
+		
+		String ip = "61.78.121.242";
+		String replacedIp = ip.replaceAll(".", "_") ; // 61_78_121_242 -> 마침표 대신 밑줄이면 좋겠다. /// 정규식에서 마침표는 모든 글자를 의미.
+		System.out.println(replacedIp);				// replaceAll을 썼을 때 61_78_121_242로 안 나오고 다른 정답이 나옴
+		
+	}
+	
+	public static void isEmpty() {
+		
+		// isEmpty
+		// 빈 문자열이면 true 반환
+		// 빈 문자열("") : 문자열의 길이가 0이면 빈 문자열이다.
+		
+		String str = " ";
+		if(str.trim().isEmpty()) {
+			System.out.println("빈 문자열이다.");
+		} else {
+			System.out.println("빈 문자열이 아니다.");		// " " 띄어쓰기 하나 들어간 것도 빈 문자열 아니다. -> trim()을 쓰면 빈 문자열로 만들 수 있다.
+		}
+		
+		// isBlank
+		// 빈 문자열이거나 공백 문자로만 구성되었다면 true 반환
+		// JDK 11 이후에서만 사용 가능
+		if(str.isBlank()) {
+			System.out.println("빈 문자열이다.");
+		} else {
+			System.out.println("빈 문자열이 아니다.");		
+		}
+		
+	}
+	
+	public static void format() {
+		
+		// format => 읽어보기만 해라
+		// 문자열을 지정한 형식으로 반환
+		
+		// 숫자 형식 지정하기(전산에서 공부해야 할 숫자:2,8,10,16진수)
+		int number = 1000;
+		
+		System.out.println(String.format("%o", number));	// %o : 8진수으로 표시하시오.
+		System.out.println(String.format("%d", number));	// %d : 10진수로 표시하시오.
+		System.out.println(String.format("%x", number));	// %x : 16진수로 표시하시오.(0~9, a, b, c, d, e, f)	그나마 16진수 쓸 수 있다.
+		System.out.println(String.format("%X", number));	// %X : 16진수로 표시하시오.(0~9, A, B, C, D, E, F) 
+		
+		// 문자열 형식 지정하기
+		String str = "hi";
+		System.out.println(String.format("%s", str));	// %s : 문자열로 표시하시오.
+		
+		// 출력 폭 지정하기
+		System.out.println(String.format("%10d", number));	// %10d  : 10자리로 표시하시오. 숫자는 오른쪽에 표시하시오. 앞에 6자리 있음.
+		System.out.println(String.format("%-10d", number));	// %-10d : 10자리로 표시하시오. 숫자는 왼쪽에 표시하시오. 뒤에 6자리 있음.
+		System.out.println(String.format("%5s", str));		// %5s  : 5자리로 표시하시오. 문자열은 오른쪽에 표시하시오. 
+		System.out.println(String.format("%-5s", str));		// %-5s : 5자리로 표시하시오. 문자열은 왼쪽에 표시하시오. 
+		
+	
+	}
 	
 	public static void ex01() {
 		
@@ -242,6 +327,7 @@ public class MainClass {
 	}
 	
 	public static void ex02() {
+
 		
 		String fullName = "a.p.p.l.e.tar.gz";	// a.p.p.l.e.jpg 도 가능하기에..
 		
@@ -258,18 +344,19 @@ public class MainClass {
 		System.out.println(fileName);
 		System.out.println(extName);
 		
-		String fileName2 = fullName.substring(0, fullName.lastIndexOf(".")); // apple . lastIndexOf를 써야함.
-		System.out.println(fileName2);
+		String fileName2 = fullName.substring(0, fullName.lastIndexOf(".")); // apple.jpg lastIndexOf를 써야함.
+		System.out.println(fileName2);	// apple
 		
-		String extName2 = fullName.substring(fullName.lastIndexOf(".") + 1); // jpg . lastIndexOf를 써야함.
-		System.out.println(extName2);
+		String extName2 = fullName.substring(fullName.lastIndexOf(".") + 1); // apple.jpg lastIndexOf를 써야함.
+		System.out.println(extName2);	// jpg
 
 		
 		
 	}
 	
+	
 	public static void main(String[] args) {
-		toCase();
+		format();
 	}
 
 }
