@@ -145,8 +145,17 @@ public class MainClass {
 			System.out.println();
 		}
 		
+		System.out.println("-----");
+		
 		for(int i = 0; i < arr.length; i++) {
 			System.out.println(  Arrays.toString(arr[i]));
+		}
+		
+		System.out.println("-----");
+
+		// 향상 for문( 2차원 배열 )
+		for(int[] a : arr) {
+			System.out.println(  Arrays.toString(a));
 		}
 		
 		// 이런 거 연습하려면 테트리스 T 자 90도 돌리는 것 배열에서 규칙을 찾아보자.
