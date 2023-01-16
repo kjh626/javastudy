@@ -173,6 +173,63 @@ public class MainClass {
 		
 	}
 	
+	public static void startsWith() {
+		
+		// startsWith
+		// 문자열이 지정된 정규식 패턴(Regular Expression)으로 시작하면 true 반환
+		
+		// endsWith
+		// 문자열이 지정된 정규식 패턴(Regular Expression)으로 끝나면 true 반환
+
+		// matches
+		// 문자열이 지정된 정규식 패턴(Regular Expression)을 포함하면 true 반환
+		
+		String name = "민경태";
+		
+		if(name.startsWith("민")) {
+			System.out.println("민씨다.");
+		} else {
+			System.out.println("민씨가 아니다.");
+		}
+		
+		
+	}
+	
+	public static void contains() {
+		
+		// contains
+		// 문자열이 지정된 CharSequence(String, char[] 등)를 포함하면 true 반환
+		
+		// 참고
+		// public interface CharSequence { }		// CharSequence라고 써있으면 String이라고 생각하면 OK.
+		// public class String  implements CharSequence { } 
+		
+		String email = "wjd1113@naver.com";
+		
+		if(email.contains("@")) {
+			System.out.println("이메일이 맞다.");
+		} else {
+			System.out.println("이메일이 아니다.");
+		}
+		
+	}
+	
+	public static void toCase() {
+		
+		// toUpperCase 
+		// 대문자로 변환
+		
+		// toLowerCase
+		// 소문자로 변환
+		
+		String str = "I am a boy";
+		
+		System.out.println(str.toUpperCase());
+		System.out.println(str.toLowerCase());
+		
+	}
+	
+	
 	public static void ex01() {
 		
 		String url = "https://comic.naver.com/webtoon/detail?titleId=758037&no=112&weekday=mon";
@@ -186,18 +243,33 @@ public class MainClass {
 	
 	public static void ex02() {
 		
-		String fullName = "apple.jpg";
+		String fullName = "a.p.p.l.e.tar.gz";	// a.p.p.l.e.jpg 도 가능하기에..
 		
-		String fileName = fullName.substring(0, fullName.indexOf(".")); // apple
+		String fileName = "";
+		String extName = "";
+		if(fullName.endsWith(".tar.gz")) {
+			fileName = fullName.substring(0, fullName.lastIndexOf(".tar.gz"));
+			extName = ".tar.gz";
+		} else {
+			fileName = fullName.substring(0, fullName.lastIndexOf("."));	// apple
+			extName = fullName.substring(fullName.lastIndexOf("."));		// .jpg 		이름을 바꾸는...
+		}
+		
 		System.out.println(fileName);
-		
-		String extName = fullName.substring(fullName.indexOf(".") + 1); // jpg
 		System.out.println(extName);
+		
+		String fileName2 = fullName.substring(0, fullName.lastIndexOf(".")); // apple . lastIndexOf를 써야함.
+		System.out.println(fileName2);
+		
+		String extName2 = fullName.substring(fullName.lastIndexOf(".") + 1); // jpg . lastIndexOf를 써야함.
+		System.out.println(extName2);
+
+		
 		
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		toCase();
 	}
 
 }
