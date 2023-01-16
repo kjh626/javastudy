@@ -5,8 +5,8 @@ public class MainClass {
 	public static void ex01() {
 		
 		// upcasting
-		Person person = new Student();		// 부모 타입에 저장. 업캐스팅의 문제점 해결 
-											// 2가지 - 1) 부모 클래스에도 메소드 만들고 자식 클래스 메소드 오버라이드, 2) 다운캐스팅
+		Person person = new Student();		// 부모 타입에 저장. 업캐스팅의 문제점 해결 방법 2가지 - 
+											// 1) 부모 클래스에도 메소드 만들고 자식 클래스 메소드 오버라이드, 2) 다운캐스팅
 		
 		// downcasting
 		Student student = (Student) person;	// 자식 타입에 저장
