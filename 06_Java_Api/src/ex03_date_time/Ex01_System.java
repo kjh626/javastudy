@@ -29,7 +29,7 @@ public class Ex01_System {
 		long nanoTime1 = System.nanoTime();	// 나노 타임은 timestamp값이 아님(1970~ 현재시간 아님)
 
 		// 작업수행
-		for(char ch = 'A'; ch <+ 'Z'; ch++) {
+		for(char ch = 'A'; ch <= 'Z'; ch++) {
 			// str += ch;	// 70400ns
 			 sb.append(ch);  // 13700ns
 		}
