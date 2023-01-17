@@ -36,7 +36,6 @@ public class Ex02_Random {
 		int RandNumber3 = random.nextInt(10);	// 10개(0 ~ 9) 난수 발생
 		System.out.println(RandNumber3);
 		
-		
 	}
 	
 	public static void main(String[] args) {
