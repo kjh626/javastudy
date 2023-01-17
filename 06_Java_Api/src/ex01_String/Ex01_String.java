@@ -1,6 +1,6 @@
 package ex01_String;
 
-public class MainClass {
+public class Ex01_String {
 
 	public static void literal() {
 		
@@ -356,7 +356,7 @@ public class MainClass {
 	
 	
 	public static void main(String[] args) {
-		format();
+		lastIndexOf();
 	}
 
 }
