@@ -10,7 +10,7 @@ public class Ex03_SecureRandom {
 		
 		SecureRandom secureRandom = new SecureRandom();
 		
-		// 정수 난수
+		// 정수 난수	// Random이랑 사용법 비슷
 		int dice = secureRandom.nextInt(6) + 1;	// 주사위 1 ~ 6
 		System.out.println(dice);
 		

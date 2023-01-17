@@ -30,15 +30,15 @@ public class Ex01_Math_random {
 		
 		// 숫자 0~9 랜덤하게, 6자리 인증번호 만들기
 
+
 		StringBuilder sb = new StringBuilder();
 		
 		for(int count = 0; count < 6; count++) {
 			sb.append((int)(Math.random() * 10));
 		}
-		
 		String code = sb.toString();
 		System.out.println(code);
-	
+		
 	}
 
 	public static void main(String[] args) {
