@@ -43,7 +43,7 @@ public class MainClass {
 		if(person1.equals(person2)) {		// Object 클래스의 equals는 참조값을 비교한다. 내용물이 아무리 같아도 서로 다른 객체라면 다르다고 인식한다.
 			System.out.println("같은 Person이다.");
 		} else {
-			System.out.println("다른 Person이다.");		// name이 같으면 의 코드를 안 짜줌.
+			System.out.println("다른 Person이다.");		// name이 같으면 의 코드를 안 짜줌. equals 오버라이드해야 된다.
 		}
 	}
 	
