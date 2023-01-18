@@ -6,6 +6,8 @@ public class User {
 	// User를 하나만 만들 수 있다. 2개 이상 안 됨. 
 	// 하나 만들어 놓고 계속 가져다 쓸 수 있게 해준다.
 	
+	// 이런 패턴으로 만든다고 생각해얄듯
+	
 	// static 필드 (미리 User를 만들어 둔다.)
 	private static User user = new User();
 	

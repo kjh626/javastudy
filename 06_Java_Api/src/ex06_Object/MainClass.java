@@ -29,7 +29,7 @@ public class MainClass {
 		
 			if(person instanceof Person) {
 				((Person) person).eat();	// Object 객체는 사용하기 위해서 항상 캐스팅해야 한다.
-				((Person) person).sleep();  
+				((Person) person).sleep();
 			}
 	}
 	
