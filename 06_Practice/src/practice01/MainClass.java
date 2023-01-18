@@ -57,6 +57,11 @@ public class MainClass {
 	// 총 몇 번만에 종료되었는지 그 횟수를 마지막에 출력한다.
 	public static void ex03() {
 		
+		Scanner sc = new Scanner(System.in);
+		String a = sc.next();
+		StringBuilder sb = new StringBuilder();
+		sb.append(sc);
+		System.out.println();
 	}
 
 	// 문제4. 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.
@@ -129,7 +134,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 	}
 
 }
