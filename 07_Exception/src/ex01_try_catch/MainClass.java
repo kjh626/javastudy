@@ -1,5 +1,6 @@
 package ex01_try_catch;
 
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class MainClass {
@@ -14,7 +15,7 @@ public class MainClass {
 			season[1] = "summer";
 			season[2] = "autumn";
 			season[3] = "winter";
-			season[4] = "what??";
+			season[4] = "what??";	// 이미 배열의 길이는 4로 만들어서 [4]는 쓸 수 없다.
 			
 			
 			for(String str : season) {		// season[3]이 null -> str에 null 저장
@@ -42,6 +43,7 @@ public class MainClass {
 		} catch(NumberFormatException e) {	// unchecked이기 때문에. UnChecked Exception이므로 RuntimeException 가능
 			System.out.println("NumberForamatException 발생");
 		}
+		// UnChecked Exception 은 try,catch가 없어도 동작한다.
 	}
 	
 	public static void ex03() {
@@ -65,8 +67,20 @@ public class MainClass {
 		}
 	}
 	
+	public static void ex04() {
+		
+		//Checked Exception
+		try {
+			FileReader fr = new FileReader("sample.txt");	// 파일이 없으면 어떡할 건지 대비책을 세워야 한다. -> try,catch 없으면(unhandled exception) 실행 못함
+			fr.close();
+		} catch(Exception e) {
+			System.out.println("예외가 발생하였다.");
+		}
+	}
+	
 	public static void main(String[] args) {
-		ex03();
+		ex04();
+		// 7장 이후 부터가 우선적으로 공부해야할 내용이다.
 	}
 	
 }
