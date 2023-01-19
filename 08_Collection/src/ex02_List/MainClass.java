@@ -21,7 +21,6 @@ public class MainClass {
 		list.add(0, "spring");  // 인덱스 0에 spring 추가됨, 위에 거는 알아서 하나씩 밀린다.
 		
 		// 삭제 - 2가지 방법
-		
 		// list.remove("frog");   // 1. 삭제할 대상("frog") 직접 전달
 		list.remove(3);         // 2. 삭제할 대상의 인덱스를 전달
 		
@@ -39,7 +38,7 @@ public class MainClass {
 		
 		// ArrayList 초기화 - 특정 클래스(Arrays)의 도움을 받아야 함
 		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);   // 1,2,3,4,5 로 초기화를 했다.
-		
+
 		// 리스트 길이
 		System.out.println("리스트 길이 : " + list.size());
 		
