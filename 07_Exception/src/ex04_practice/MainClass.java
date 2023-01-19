@@ -7,7 +7,7 @@ public class MainClass {
 		Gun gun = new Gun();
 		
 		try {
-			gun.reload(55);
+			gun.reload(15);
 			for(int n = 0; n < 11; n++) {
 				System.out.println(gun.getBullet());
 				gun.shoot();
