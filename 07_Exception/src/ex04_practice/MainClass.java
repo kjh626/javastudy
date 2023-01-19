@@ -7,11 +7,13 @@ public class MainClass {
 		Gun gun = new Gun();
 		
 		try {
-			gun.reload(9);
+			gun.reload(55);
 			for(int n = 0; n < 11; n++) {
+				System.out.println(gun.getBullet());
 				gun.shoot();
 			}
-		} catch(Exception e) {
+		} catch(Exception e) {	
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 		
