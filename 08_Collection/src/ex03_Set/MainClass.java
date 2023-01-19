@@ -52,7 +52,7 @@ public class MainClass {
 		Set<Integer> set2 = new HashSet<Integer>(Arrays.asList(3, 4, 5, 6, 7));
 		
 		// 교집합
-		set1.retainAll(set2);	//교집한 처리하기, set1 에 교집합 결과가 저장된다.
+		set1.retainAll(set2);	// set1 에 교집합 결과가 저장된다.
 		// 문제는 교집합 결과가 반환되지 않는다. 그 결과 어디에 저장??
 		
 		System.out.println(set1);
@@ -99,7 +99,7 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 	
-		ex06();
+		ex05();
 		
 	}
 }
