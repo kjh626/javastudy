@@ -28,7 +28,7 @@ public class MainClass {
 			
 		} catch(Exception e) {  		
 			// catch의 내용을 채워놔야 문제를 알기 쉽다.
-			e.printStackTrace(); 		// 예외를 추적하는 메소드(개발중에는 이것만 사용함). 우리는 추적해서 수정하면 됨.
+			e.printStackTrace(); 		// 예외를 추적하는 메소드(개발중에는 이것만 사용함). (아래서부터 보면 됨)우리는 추적해서 수정하면 됨.
 			
 		}	// 이 catch가 try,catch에서 기본이 되는 코드라 생각해라
 		
@@ -45,7 +45,7 @@ public class MainClass {
 		
 		try {
 			sc = new Scanner(System.in);
-			System.out.println("나이를 입력하세요 >>> ");
+			System.out.print("나이를 입력하세요 >>> ");
 			int age = sc.nextInt();
 			if(age < 0 || age > 100) {
 				throw new RuntimeException(age + "살은 불가능합니다.");		// 그냥 RuntimeException 던져라
@@ -61,7 +61,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex01();
+		ex03();
 	}
 	
 }
