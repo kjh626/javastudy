@@ -7,7 +7,7 @@ public class MainClass {
 		Gun gun = new Gun();
 		
 		try {
-			gun.reload(9);	   // reload 메소드 호출 <- throws RuntimeException : reload 메소드를 호출하는 곳으로 예외를 던지겠다.
+			gun.reload(11);	   // reload 메소드 호출 <- throws RuntimeException : reload 메소드를 호출하는 곳으로 예외를 던지겠다.
 			for(int n = 0; n < 11; n++) {
 				gun.shoot();
 			}					// 예외 발생할 시 발생된 예외는 자동으로 catch로 전달된다.

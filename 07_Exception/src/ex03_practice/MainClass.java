@@ -2,6 +2,8 @@ package ex03_practice;
 
 import java.util.Scanner;
 
+import javax.management.RuntimeErrorException;
+
 public class MainClass {
 
 	public static void ex01() {
@@ -32,6 +34,7 @@ public class MainClass {
 	public static void ex03() {
 		
 		// throw
+
 		
 		Scanner sc = null;
 		
@@ -42,13 +45,12 @@ public class MainClass {
 			if(age < 0 || age > 100) {
 				throw new RuntimeException(age + "살은 불가능합니다.");
 			}
-			System.out.println(age >= 20 ? "주류 가능" : "주류 불가능");
-		} catch(Exception e) {
+			System.out.println(age >= 20 ? "주류 구매 가능" : "주류 구매 불가능");
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
 			sc.close();
 		}
-		
 	}
 	
 	public static void main(String[] args) {
