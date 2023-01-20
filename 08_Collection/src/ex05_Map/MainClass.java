@@ -25,7 +25,7 @@ public class MainClass {
 	public static void ex01() {
 		
 
-		//*** HashMap 만들기, 추가하기 이 두가지를 제일 많이 쓴다.
+		//*** HashMap 만들기, 추가하기 - 이 두가지를 제일 많이 쓴다.
 		
 		// Person 정보를 HashMap으로 만들기
 		Map<String, Object> person = new HashMap<String, Object>();
@@ -117,8 +117,8 @@ public class MainClass {
 		// List의 순회
 		for(int i = 0, length = books.size(); i < length; i++) {
 			// Map의 순회(List에 저장된 요소가 Map이다.)
-			System.out.println((i + 1) + "번째 책의 정보");
 			Map<String, Object> book = books.get(i);	// 배열이 아니다. get으로 쓴다.
+			System.out.println((i + 1) + "번째 책의 정보");
 			
 			for(Entry<String, Object> entry : book.entrySet()) {
 				System.out.println(entry.getKey() + " : " + entry.getValue());
@@ -128,7 +128,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex01();
+		ex04();
 	}
 
 }

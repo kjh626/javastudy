@@ -1,65 +1,51 @@
-package ex03_Set;
+package ex03_practice;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class MainClass {
-
-	/*
-		Set
-		1. 저장된 요소들의 index가 없다. → 저장 순서가 없다.
-		2. 중복 저장이 되지 않는다. => (유니크한 데이터)중복 없는 데이터 저장할 때, 관리할 때 Set이 좋다.
-	*/
 	
 	public static void ex01() {
 		
 		// Set이라는 인터페이스
 		// HashSet 객체 선언 및 생성
-		Set<String> set = new HashSet<String>();	// generic 구조
+		Set<String> set = new HashSet<String>();
 		
 		// 추가
-		set.add("spring");
-		set.add("spring");  // 무시됨
-		set.add("spring");  // 무시됨
-		set.add("summer");
-		set.add("autumn");
-		set.add("winter");
-
+		set.add("빨강");
+		set.add("주황");
+		set.add("노랑");
+		set.add("노랑");
+		set.add("초록");
+		set.add("파랑");
+		
 		// 제거
-		set.remove("winter");
+		set.remove("주황");
 		
 		// 확인
-		System.out.println(set);  //[spring, winter, autumn, summer] 이르케 나옴 => 순서가 없다.
-		
+		System.out.println(set);
 	}
 	
 	public static void ex02() {
 		
-		// HashSet 객체의 초기화 (List를 이용해서 초기화를 진행)
-		Set<Integer> set = new HashSet<Integer>(Arrays.asList(1, 2, 3, 4, 5));
+		Set<Integer> set = new HashSet<Integer>(Arrays.asList(10,20,30,40,50));
 		
-		// 인덱스가 없기 때문에 향상 for문만 가능하다
 		for(Integer n : set) {
 			System.out.println(n);
 		}
-		
 	}
 	
-	public static void ex03() { // 기록만 남겨두는 것
+	public static void ex03() {
 		
-		Set<Integer> set1 = new HashSet<Integer>(Arrays.asList(1, 2, 3, 4, 5));
-		Set<Integer> set2 = new HashSet<Integer>(Arrays.asList(3, 4, 5, 6, 7));
+		Set<Integer> set1 = new HashSet<Integer>(Arrays.asList(1,2,4,5));
+		Set<Integer> set2 = new HashSet<Integer>(Arrays.asList(3,5,6,7));
 		
-		// 교집합
-		set1.retainAll(set2);	// set1 에 교집합 결과가 저장된다.
-		// 문제는 교집합 결과가 반환되지 않는다. 그 결과 어디에 저장??
+		//교집합
+		set1.retainAll(set2);
 		
 		System.out.println(set1);
 		System.out.println(set2);
-		
-		
-		
 	}
 	
 	public static void ex04() {  // 기록만 남겨두는 것
@@ -87,7 +73,7 @@ public class MainClass {
 		System.out.println(set2);
 	}
 	
-	public static void ex06() {   // 연습
+	public static void ex06() {
 		Set<Integer> lotto = new HashSet<Integer>();
 		
 		// 1 ~ 45 : 6개 랜덤으로 발생
@@ -98,8 +84,6 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-	
-		ex01();
-		
+		ex06();
 	}
 }
