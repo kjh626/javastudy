@@ -46,7 +46,7 @@ public class ParkingLot {
 			} 
 			
 		}
-		System.out.println("대상 차량이 존재하지 않습니다..");
+		System.out.println("대상 차량이 존재하지 않습니다.");
 		
 	}
 	

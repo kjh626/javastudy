@@ -83,7 +83,7 @@ public class ParkingLot {
 			*/
 		}
 		// for문 밖. 삭제할 차량이 없을 때 여기로 와야 한다.(이미 전체 순회를 했다. for-> if에서)
-		System.out.println("대상 차량이 존재하지 않습니다..");
+		System.out.println("대상 차량이 존재하지 않습니다.");
 		
 	}
 	
