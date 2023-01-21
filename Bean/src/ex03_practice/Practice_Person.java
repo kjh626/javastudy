@@ -1,4 +1,4 @@
-package ex03_singleton;
+package ex03_practice;
 
 public class Practice_Person {
 
