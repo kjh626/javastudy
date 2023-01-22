@@ -73,7 +73,7 @@ public class Cart {
 				System.out.println(products[i].toString());
 				products[--prodCount] = null;
 				return;*/
-			}	// 마지막 물건 자리는 옮겨지는 건가??
+			}	// 마지막 물건 자리는 옮겨지는 건가?? 복사하기가 되는 것. 마지막 물건 자리를 null처리 해줘야한다.
 		
 		
 		}
