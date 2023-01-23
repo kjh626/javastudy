@@ -1,5 +1,8 @@
 package practice07_TourGuide;
 
-public class Tour {
+public interface Tour {
+	
+	public void sightseeing();
+	public void leisure();
 
 }

@@ -38,17 +38,17 @@ public class MainClass {
 	// 새로 사귄 친구의 수를 입력 받아서 기존 친구들이 저장된 배열의 길이를 새로 사귄 친구의 수만큼 늘리시오.
 	public static void ex02() {
 		String[] friends = {"철수", "영수", "국진"};
-		String[] newFriends = new String[friends.length + 5];
+		Scanner sc = new Scanner(System.in);
+		System.out.print("새로 사귄 친구가 몇 명인가요? >>> ");
+		int newFriendCount = sc.nextInt();
+		String[] temp = new String[friends.length + newFriendCount];
 		
 		for(int i = 0; i < friends.length; i++) {
-			newFriends[i] = friends[i];
+			temp[i] = friends[i];
 		}
-		friends = newFriends;
-		
-		for(int i = 0; i < friends.length; i++) {
-			System.out.println(friends[i]);
-		}
-		
+		friends = temp;
+		System.out.println(friends.length);
+		sc.close();
 		
 	}
 	
@@ -58,10 +58,15 @@ public class MainClass {
 	public static void ex03() {
 		
 		Scanner sc = new Scanner(System.in);
-		String a = sc.next();
-		StringBuilder sb = new StringBuilder();
-		sb.append(sc);
-		System.out.println();
+		String str = "";
+		int count = 0;
+		while ( !str.equals("종료") ) {  // 종료가 아니면 계속 입력 받는다.
+			System.out.print("문자열 입력 >>> ");
+			str = sc.next();
+			count++;
+		}
+		System.out.println(count + "번만에 종료가 입력되었다.");
+		sc.close();
 	}
 
 	// 문제4. 퀴즈 정답을 맞힐때까지 계속 퀴즈를 내시오.
@@ -72,12 +77,37 @@ public class MainClass {
 	// 질문 : 대한민국의 수도는? >>> 인천
 	// 오답입니다.
 	public static void ex04() {	
+		Scanner sc = new Scanner(System.in);
+		String city = null;
 		
+		// 최초 1회는 조건 없이 항상 처리되는 while문
+		do {
+			if (city != null) {
+				System.out.println("오답입니다.");
+			}
+			System.out.print("대한민국의 수도는? >>> ");
+			city = sc.next();
+		} while ( !city.equals("서울") && !city.equalsIgnoreCase("seoul") );
+		
+		System.out.println("정답입니다.");
+		sc.close();
 	}
 	
 	// 문제5. 평점 입력 받아서 해당 평점만큼 ★을 출력하시오.
 	// 평점은 1 ~ 5 사이 정수로 입력 받는데, 벗어난 범위는 다시 입력 받는다.
 	public static void ex05() {
+		
+		int score = 0;
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.print("평점을 입력하시오 >>> ");
+			score = sc.nextInt();
+		} while(score < 1 || score > 5);
+		for(int count = 0; count < score; count++) {
+			System.out.print("★");
+		}
+		sc.close();
 		
 	}
 	
@@ -134,7 +164,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex05();
 	}
 
 }
