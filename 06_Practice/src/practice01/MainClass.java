@@ -145,6 +145,17 @@ public class MainClass {
 	// 8x7? >>> 49
 	// 땡
 	public static void ex07() {
+		int dan = (int)(Math.random() * 8) + 2;	// 0<= random < 1
+		int n = (int)(Math.random() * 9) + 1;
+		System.out.print(dan + "x" + n + "? >>> ");
+		Scanner sc = new Scanner(System.in);
+		int result = sc.nextInt();
+		if(result == dan * n) {
+			System.out.println("정답");
+		} else {
+			System.out.println("땡");
+		}
+		sc.close();
 		
 	}
 	
@@ -181,7 +192,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex06();
+		ex07();
 	}
 
 }
