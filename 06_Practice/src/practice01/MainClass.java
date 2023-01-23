@@ -116,6 +116,17 @@ public class MainClass {
 	// 비밀번호 입력은 최대 5번으로 제한하고, 5번의 입력이 모두 틀리면 최종적으로 "실패"를 출력하시오.
 	public static void ex06() {
 		
+		String password = "1234";
+		Scanner sc = new Scanner(System.in);
+		String str = null;
+		
+		do {
+			System.out.print("비밀번호를 입력하시오 >>> ");
+			str = sc.next();
+			
+		} while(!str.equals(password));
+		System.out.println("성공");
+		sc.close();
 	}		
 	
 	// 문제7. 구구단을 외자.
@@ -164,7 +175,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex05();
+		ex06();
 	}
 
 }
