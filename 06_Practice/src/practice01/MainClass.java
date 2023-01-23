@@ -120,12 +120,18 @@ public class MainClass {
 		Scanner sc = new Scanner(System.in);
 		String str = null;
 		
-		do {
-			System.out.print("비밀번호를 입력하시오 >>> ");
+		for(int i = 0; i < 5; i++) {
+			System.out.print("비밀번호는? >>> ");
 			str = sc.next();
-			
-		} while(!str.equals(password));
-		System.out.println("성공");
+			if(str.equals(password)) {
+				System.out.println("성공");
+				sc.close();
+				break;
+			}
+		}
+		if(!str.equals(password)){
+			System.out.println("실패");
+		}
 		sc.close();
 	}		
 	
