@@ -166,6 +166,10 @@ public class MainClass {
 	// 28살 여자입니다.
 	public static void ex08() {
 		
+		String personalId = "880505-1234567";
+		
+		
+		
 	}
 	
 	// 문제9. 다음 기준에 따라서 파일명을 변환하시오.
@@ -175,6 +179,20 @@ public class MainClass {
 	// 변환 전 파일명 >>> happy.jpg
 	// 변환 후 파일명 = happy_1658792128410.jpg
 	public static void ex09() {
+		
+		String beforeName = "";
+		String afterName = "";
+		Scanner sc = new Scanner(System.in);
+		System.out.print("변환 전 파일명 >>> ");
+		beforeName = sc.next();
+		
+		String fileName = beforeName.substring(0, beforeName.lastIndexOf("."));
+		String extName = beforeName.substring(beforeName.lastIndexOf("."));
+		
+		long timestamp = System.currentTimeMillis();
+		afterName = fileName + "_" +  timestamp + extName;
+		System.out.print("변환 후 파일명 = " + afterName);
+		sc.close();
 		
 	}
 	
@@ -192,7 +210,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex07();
+		ex09();
 	}
 
 }
