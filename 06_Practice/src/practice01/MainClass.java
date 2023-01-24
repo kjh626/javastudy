@@ -207,10 +207,26 @@ public class MainClass {
 	// 처음 뵙겠습니다
 	public static void ex10() {
 		
+		String[] friend = {"정우성", "박정민"};
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.print("이름 입력 >>> ");
+		String name = sc.next();
+		
+		for(int i = 0; i < friend.length; i++) {
+			if(name.equals(friend[i])) {
+				System.out.println("반갑다 친구야");
+				sc.close();
+				return;
+			}
+		}
+		System.out.println("처음 뵙겠습니다.");
+		sc.close();
+		
 	}
 	
 	public static void main(String[] args) {
-		ex09();
+		ex10();
 	}
 
 }
