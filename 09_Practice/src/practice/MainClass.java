@@ -1,8 +1,10 @@
 package practice;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Calendar;
 
 public class MainClass {
 
@@ -17,7 +19,6 @@ public class MainClass {
 		int hour = now.getHour();
 		int minute = now.getMinute();
 		int second = now.getSecond();
-		
 		/*
 		LocalDateTime now = LocalDateTime.now();
 		
@@ -30,9 +31,8 @@ public class MainClass {
 		if(dir.exists() == false) {
 			dir.mkdirs();
 		} 
-		
+		// 실행했을 때 글자수를 2자리로 맞추는 것도 연습하면 좋다.
 	}
-	
 	
 	public static void main(String[] args) {
 		ex01();

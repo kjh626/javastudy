@@ -1,6 +1,8 @@
 package ex01_File;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class MainClass {
 
@@ -36,11 +38,60 @@ public class MainClass {
 			System.out.println("C:" + File.separator + "storage 삭제 완료");
 		}
 		
-		
 	}
 	
-	public static void main(String[] args) {
-		ex01();
+	public static void ex02() throws IOException {	// 예외 처리를 ex02 메소드를 호출한 곳으로 넘긴다.
+		// 권장 방법
+		File dir = new File("C:" + File.separator + "storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();		// 폴더 없으면 만들어라
+		}
+		
+		File file = new File(dir, "myfile.txt");
+		if(file.exists() == false) {
+			file.createNewFile();	// 반드시 예외 처리가 필요한 코드이다. (IOException - Checked Exception)
+		} else {
+			file.delete();
+		}
+		
+	}
+
+	public static void ex03() throws IOException {
+		
+		File dir = new File("C:" + File.separator + "storage");
+		
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File file = new File(dir, "myfile.txt");
+		
+		if(file.exists() == false) {
+			file.createNewFile();
+		}
+		
+		// 파일의 정보 확인
+		System.out.println("파일명 : " + file.getName());
+		System.out.println("디렉터리명 : " + file.getParent());	// 파일은 폴더를 부모라고 부른다는 것을 알 수 있음
+		System.out.println("경로명 : " + file.getPath());   // 파일명 + 디렉터리명
+		
+		System.out.println("디렉터리인가? " + file.isDirectory());
+		System.out.println("파일인가? " + file.isFile());	// 파일이면 true
+		
+		long lastModified = file.lastModified();	// 최종 수정일의 타임 스탬프 값이 나온다.
+		System.out.println("최종 수정일 : " + lastModified);
+		
+		String lastModifiedDate = new SimpleDateFormat("yyyy-MM-dd").format(lastModified);	// 이때 졸았음 한번 더 보셈
+		System.out.println("최종 수정일 : " + lastModifiedDate);
+		
+		long size = file.length(); 		// 파일의 크기가 바이트 단위로 저장
+		long kb = (size / 1024) + (size % 1024 != 0 ? 1 : 0);		// 5바이트 -> 1kb로 보여주듯이.
+		System.out.println("파일 크기 : " + kb + "KB");	// 킬로 바이트 출력(1024바이트 = 1킬로바이트)
+	} 
+	
+	public static void main(String[] args) throws IOException {		// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
+		
+		ex03();
 	}
 
 }
