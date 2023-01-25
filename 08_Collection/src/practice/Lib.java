@@ -40,7 +40,7 @@ public class Lib {
 		if(isbn.isEmpty() == false) {	
 			/* 1. 객체 기반 삭제(Book 객체 간 동등 비교가 필요하기 때문에 equals 메소드를 오버라이드 해야 한다.)*/
 			for(Book book : books) {
-				if(isbn.equals(book.getIsbn())) {	// target을 책을 만들어서 equals로 비교하는 방법도 있다.
+				if(isbn.equals(book.getIsbn())) {	// target을,책을 만들어서 equals로 비교하는 방법도 있다.
 					books.remove(book);		// equals 메소드가 내부에서 사용된다.
 					System.out.println(book + " 책이 삭제되었습니다.");	
 					return;
