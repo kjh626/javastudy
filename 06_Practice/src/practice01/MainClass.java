@@ -1,5 +1,6 @@
 package practice01;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class MainClass {
@@ -167,7 +168,23 @@ public class MainClass {
 	public static void ex08() {
 		
 		String personalId = "880505-1234567";
-		
+		Calendar calendar = Calendar.getInstance();
+		int nowYear = calendar.get(Calendar.YEAR);
+		int genderNo = Integer.parseInt(personalId.substring(7, 8));
+		String birthYear = "";
+		switch(genderNo) {
+		case 1:
+		case 2: 
+			birthYear = 19 + personalId.substring(0, 2); 
+			break;
+		case 3:
+		case 4: 
+			birthYear = 20 + personalId.substring(0, 2); 
+			break;
+		}
+		int age = nowYear - Integer.parseInt(birthYear) + 1;
+		String[] gender = {"여자", "남자"};
+		System.out.println(age + "살 " + gender[genderNo % 2] + "입니다.");
 		
 		
 	}
@@ -226,7 +243,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex08();
 	}
 
 }

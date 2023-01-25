@@ -13,7 +13,16 @@ public class MainClass {
 	// 출금 전 18원, 5회 출금액 17원, 출금 후 1원
 	// 출금 전 1원, 6회 출금액 1원, 출금 후 0원
 	public static void ex01() {
-		
+		int balance = 5000;
+		int n = 0;
+		do {
+			if(balance > 0) {
+			int rand = (int)(Math.random() * balance) + 1;
+			System.out.print("출금 전 " + balance + "원, " + ++n + "회 출금액 " + rand + "원, ");
+			balance -= rand;
+			System.out.println("출금 후 " + balance + "원");
+			}
+		} while(balance > 0);
 	}
 	
 	// 문제2. UpDown 게임
@@ -187,7 +196,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex10();
+		ex01();
 	}
 
 }

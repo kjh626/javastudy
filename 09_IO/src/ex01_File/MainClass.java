@@ -104,7 +104,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) throws IOException {		// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
-		ex03();
+		ex04();
 	}
 
 }
