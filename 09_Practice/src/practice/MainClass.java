@@ -80,6 +80,9 @@ public class MainClass {
 		/*
 		int count = 0;
 		long size = 0;
+		String sep = File.separator;
+		
+		File[] files = dir.listFiles();
 		
 		// 날짜
 		long lastModified = dir.lastModified();
