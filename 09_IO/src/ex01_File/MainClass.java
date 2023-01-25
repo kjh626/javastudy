@@ -89,8 +89,21 @@ public class MainClass {
 		System.out.println("파일 크기 : " + kb + "KB");	// 킬로 바이트 출력(1024바이트 = 1킬로바이트)
 	} 
 	
-	public static void main(String[] args) throws IOException {		// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
+	public static void ex04() {
 		
+		File dir = new File("C:" + File.separator + "Program Files");
+		
+		File[] files = dir.listFiles();
+		
+		for(int i = 0; i < files.length; i++) {
+			if(files[i].isHidden() == false) {	// 숨긴 파일이 아닌 경우에~
+				System.out.println(files[i].getName());
+			}
+		}
+		
+	}
+	
+	public static void main(String[] args) throws IOException {		// main 메소드를 호출하는 곳으로 예외 처리를 넘긴다.(개발자가 try-catch 하지 않겠다.)
 		ex03();
 	}
 
