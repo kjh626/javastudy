@@ -39,7 +39,7 @@ public class Library {
 			System.out.print("삭제할 isbn >>> ");
 			String isbn = sc.next();
 			if(isbn.isEmpty() == false) {	// 비어있지 않을 때! 삭제 절차를 진행
-				for(int i = 0; i < books.size(); i++) {
+				for(int i = 0; i < books.size(); i++) {	// 풀스캔 돌리려고 for문
 					Book book = books.get(i);	// 저장된 책 한 권, 한 권.
 					if(isbn.equals(book.getIsbn())) {		// ArrayList의 remove는 삭제하면 내부적으로 알아서 앞으로 당긴다.
 						Book deletedBook = books.remove(i);	// remove(i)는 삭제된 요소(Book)를 반환한다. (Book deletedBook = ) 생략해도 괜찮다.
@@ -55,12 +55,40 @@ public class Library {
 			
 	}
 	
-	private void findBook() {
-		
+	private void findBook() {		// 삭제와 코드구성이 거의 같음
+		System.out.println("=== 책 조회하기 ===");
+		try {
+			if(books.isEmpty()) {
+				throw new RuntimeException("등록된 책이 없습니다.");
+			}
+			System.out.print("조회할 isbn >>> ");
+			String isbn = sc.next();
+			if(!isbn.isEmpty()) {	// isbn.isEmpty() == false 와 같은 코드. !는 잘 안 보이기 때문에 개발문서에 쓰지 말라고 적혀있을 수 있다.
+				for(Book book : books) {	// 향상 for문
+					if(isbn.equals(book.getIsbn())) {
+						System.out.println("조회결과 : " + book);
+						return;
+					}
+				}
+			}
+			throw new RuntimeException(isbn + " isbn을 가진 책이 없습니다.");	// 조회가 실패했을 때..
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	private void printAllBooks() {
-		
+		System.out.println("=== 전체 조회하기 ===");
+		try {
+			if(books.isEmpty()) {
+				throw new RuntimeException("등록된 책이 없습니다.");
+			}
+			for(Book book : books) {
+				System.out.println(book);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public void manage() {
