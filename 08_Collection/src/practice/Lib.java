@@ -69,8 +69,8 @@ public class Lib {
 		}
 		System.out.print("조회할 isbn >>> ");
 		String isbn = sc.next();
-		if(!isbn.isEmpty()) {	// isbn.isEmpty() == false 와 같은 코드. !는 잘 안 보이기 때문에 개발문서에 쓰지 말라고 적혀있을 수 있다.
-			for(Book book : books) {	// 향상 for문
+		if(!isbn.isEmpty()) {	
+			for(Book book : books) {	
 				if(isbn.equals(book.getIsbn())) {
 					System.out.println("조회결과 : " + book);
 					return;
