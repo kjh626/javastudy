@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class CSVMainClass {
 
@@ -70,6 +69,7 @@ public class CSVMainClass {
 				Map<String, Object> product = products.get(i);
 				out.println(product.get("model") + "," + product.get("maker") + "," + product.get("price"));
 			} 
+			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
