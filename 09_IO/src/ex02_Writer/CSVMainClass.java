@@ -65,7 +65,7 @@ public class CSVMainClass {
 			out.println(products.get(0).get("maker"));	// 첫번째 제품의 maker 을 꺼내는 방법
 			out.println(products.get(0).get("price"));	// 첫번째 제품의 price 을 꺼내는 방법*/
 			
-			for(int i = 0; i < products.size(); i++) {	// for문을 하나만 써서 함
+			for(int i = 0; i < products.size(); i++) {	// for문을 하나만 써서 함 , for 2개 써서도 가능.... 해보던가
 				Map<String, Object> product = products.get(i);
 				out.println(product.get("model") + "," + product.get("maker") + "," + product.get("price"));
 			} 

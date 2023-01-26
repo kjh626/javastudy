@@ -93,6 +93,7 @@ public class JSONMainClass {
 		double height = obj.getDouble("height");
 		boolean isAlive = obj.getBoolean("isAlive");
 		// Map 에서는 String name = obj.get("name"); 안 됨. 왜냐? -> 타입이 안 맞아서 캐스팅 해줘야한다. Object로 저장하기 때문에..
+		// 아마도 String name = (String)obj.get("name"); 이렇게
 		
 		
 		System.out.println(name);
@@ -107,23 +108,29 @@ public class JSONMainClass {
 		// String 형식의 JSON 데이터
 		String str = "[{\"model\":\"세탁기\",\"maker\":\"삼성\",\"price\":\"100\"},{\"model\":\"냉장고\",\"maker\":\"LG\",\"price\":200}]";
 				
-		// JSONArray 객체 생성
+		// JSONArray 객체 생성 (배열)
 		JSONArray products = new JSONArray(str);
 		
 		// 1. 일반 for문
-		for(int i = 0; i < products.length(); i++) { 	// 객체를 읽어들이는 get=>
+		for(int i = 0; i < products.length(); i++) { 	// 객체를 읽어들이는 get=> getJSONObject
 			JSONObject obj = products.getJSONObject(i);	// 하나의 객체를 가져와서 obj에 전달
 			String model = obj.getString("model");
 			String maker = obj.getString("maker");
 			int price = obj.getInt("price");
 			System.out.println(model + "," + maker + "," + price);
 		}
-		
-		
+		// 2. 향상 for문
+		for(Object obj :  products) {				// 향상 for문을 쓰려면 Object로 받아야 한다.
+			JSONObject product = (JSONObject) obj;  // => 캐스팅해줘야 한다.
+			String model = product.getString("model");
+			String maker = product.getString("maker");
+			int price = product.getInt("price");
+			System.out.println(model + "," + maker + "," + price);
+		}
 	}
 	
 	public static void main(String[] args) {
-		ex04();
+		ex03();
 	}
 
 }
