@@ -1,11 +1,20 @@
 package ex02_Writer;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class JSONMainClass {
 
-	/*
+	/* ★★★ JSON 중요함 ★★★ 과목을 넘나드는
 		JSON 
 		1. JavaScript Object Notation
 		2. 객체는 { }로 표기하고, 배열은 [ ]로 표기한다.
@@ -129,8 +138,48 @@ public class JSONMainClass {
 		}
 	}
 	
+	public static void ex05() {
+		
+		Map<String, Object> product1 = new HashMap<String, Object>();
+		product1.put("model", "세탁기");
+		product1.put("maker", "삼성");
+		product1.put("price", 100);
+		
+		Map<String, Object> product2 = new HashMap<String, Object>();
+		product2.put("model", "냉장고");
+		product2.put("maker", "LG");
+		product2.put("price", 200);
+		
+		Map<String, Object> product3 = new HashMap<String, Object>();
+		product3.put("model", "TV");
+		product3.put("maker", "삼성");
+		product3.put("price", 300);
+		
+		// 초기화로 하는 방법
+		List<Map<String, Object>> products = Arrays.asList(product1, product2, product3);
+		
+		
+		//JSONObject obj = new JSONObject(product1);	// Map 전달 받아서 하는 게 가능
+		JSONArray arr = new JSONArray(products);	// List, Set의 부모는 Collection. 전달 받을 수 있다.
+		
+		String content = arr.toString();		// 작성해주고 싶은 내용을 String으로 저장해놓음. java에서는 주로 json데이터는 String형식으로 저장되는 경우가 많다.
+								// [{"maker":"삼성","price":100,"model":"세탁기"},{"maker":"LG","price":200,"model":"냉장고"},{"maker":"삼성","price":300,"model":"TV"}]
+		File dir = new File("C:" + File.separator + "storage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		File file = new File(dir, "product.json");
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+			bw.write(content);		// String을 받으면 OK.
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		ex03();
+		ex05();
 	}
 
 }
