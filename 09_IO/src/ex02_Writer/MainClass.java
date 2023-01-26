@@ -39,7 +39,7 @@ public class MainClass {
 		
 		try {
 			// 출력 스트림 생성 => 모든 스트림 작업은 예외처리가 필요함.
-			fw = new FileWriter(file);		// 어제 배운 거처럼 createNewFile 안 해도. 스트림하면 파일이 생성된다.
+			fw = new FileWriter(file);		// 어제 배운 거처럼 createNewFile 안 해도. 스트림하면 파일이 여기서 생성된다.
 			
 		
 			// 출력 스트림으로 문자 보내기 // 글자를 하나 보낼 때 int를 쓰는 것. character아니다. 2바이트(char) 짜리를 4바이트(int)에 저장하는 것은 문제가 없다.
@@ -121,7 +121,6 @@ public class MainClass {
 		BufferedWriter bw = null;
 		
 		try {
-			
 			// 메인 스트림 생성
 			fw = new FileWriter(file);
 			
