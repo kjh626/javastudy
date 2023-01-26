@@ -120,9 +120,21 @@ public class MainClass {
 
 		File dir = new File("C:" + File.separator + "storage");
 		
+		/* 저장된 파일이 myfile.txt 뿐이라는 걸 알고 있어서 이런 코드가 나왔죠.
 		File file = new File(dir, "myfile.txt");
 		if(file.exists()) {
 			file.delete();
+		}
+		*/
+
+		// 이건 저장된 모든 파일을 지운다는 코드입니다.(디렉터리는 없다는 가정이요.)
+		File[] files = dir.listFiles();
+		if(files != null) {			
+			for(File file : files) {
+				if(file.isFile()) {
+					file.delete();
+				}
+			}
 		}
 		
 		if(dir.exists()) {
@@ -142,7 +154,7 @@ public class MainClass {
 		
 		String[] sentences = new String[5];
 		System.out.println("5문장을 입력하세요.");
-		// sentences[0] = sc.nextLine();	// nextLine을 써야 엔터 치기 전까지 입력을 다 받을 수 있다.
+		// sentences[01234] = sc.nextLine();	// nextLine을 써야 엔터 치기 전까지 입력을 다 받을 수 있다.
 		for(int i = 0; i < sentences.length; i++) {
 			sentences[i] = sc.nextLine();
 		}
@@ -250,7 +262,7 @@ public class MainClass {
 			int number2 = sc.nextInt();
 			
 			int add = number1 + number2;
-			int sub = number1 - number2;
+			int sub = number1 - number2; 
 			int mul = number1 * number2;
 			int div = number1 / number2;
 	
@@ -284,7 +296,7 @@ public class MainClass {
 			// 생성 모드 (언제나 새로 만든다.) 		new FileWriter(file)
 			// 추가 모드 (기존 내용에 추가한다.)	new FileWriter(file, true)
 			
-			try(BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {	// true만 넣어주면 추가모드
+			try(BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {	// true만 넣어주면 추가모드(누적)
 				
 				bw.write(dateTime + " " + className + " " + message + "\n");
 				//bw.newLine()	 \n을 대신할 수 있는 코드. BufferedWriter만 제공하는 메소드
