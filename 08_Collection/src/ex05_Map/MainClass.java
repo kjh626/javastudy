@@ -113,7 +113,6 @@ public class MainClass {
 		books.add(book3);
 		
 		// for문 순회 - 2개 필요
-		
 		// List의 순회
 		for(int i = 0, length = books.size(); i < length; i++) {
 			// Map의 순회(List에 저장된 요소가 Map이다.)

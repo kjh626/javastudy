@@ -14,7 +14,7 @@ public class CSVMainClass {
 	public static void main(String[] args) {
 
 		// C:\storage\product.csv 읽기
-		// csv를 뽑아서 보관해두기
+		// 목적 : csv를 뽑아서 보관해두기
 		File file = new File("C:" + File.separator + "storage", "product.csv");
 		
 		BufferedReader br = null;

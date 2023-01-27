@@ -39,7 +39,7 @@ public class MainClass {
 			c = fr.read();
 			c = fr.read();
 			c = fr.read();
-			c = fr.read();		// 더이상 읽을 게 없으면 -1이 나옴.
+			c = fr.read();		// 더이상 읽을 게 없으면 값이 -1이 나옴.
 			*/
 			
 			int c;		// 1글자를 저장할 변수
