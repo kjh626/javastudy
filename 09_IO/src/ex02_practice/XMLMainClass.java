@@ -16,7 +16,7 @@ public class XMLMainClass {
 
 	public static void main(String[] args) {
 
-		/*
+		/* 
 		목표
 		1. 경로 
 				C:\storage\product.xml => products.xml을 document 라고 부름
@@ -67,10 +67,20 @@ public class XMLMainClass {
 		document.appendChild(products);
 		
 		// productList 순회
+		for(Map<String, Object> map : productList) {
 			// <product> 태그 : Element 생성
+			Element product = document.createElement("product");
+			document.appendChild(products);
+			
 			// <model> 태그 : Element 생성
+			Element model = document.createElement("model");
+			document.appendChild(model);
+			document.setTextContent((String)map.get("model"));
 			// <maker> 태그 : Element 생성
+			
 			// <price> 태그 : Element 생성
+			
+		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

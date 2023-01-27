@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 
 public class XMLMainClass {
 
-	/*
+	/* 만드는 거 보다는 읽어들이는 걸 주로 하게 될 것이다.
 		XML
 		1. eXtensible Markup Language
 		2. HTML(표준 마크업 언어)의 확장 버전
