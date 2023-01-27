@@ -88,7 +88,7 @@ public class MainClass {
 				sb.append(cbuf, 0, readCount);	// 인덱스 0부터 readCount개 글자를 sb에 추가하시오.
 				
 				// **FileReader 클래스의 read() 메소드는 인자로 입력받는 버퍼에 파일의 데이터를 읽어 저장한다.
-				// **그리고 파일에서 읽은 문자의 개수를 리턴한다.
+				// **그리고 파일에서 읽은 문자의 개수를 리턴한다. 문자가 없으면 => -1
 				// ex02.txt 읽는 과정
 				//루프 ReadCount	cbuf		
 				//1		5			a b c d e
@@ -126,6 +126,12 @@ public class MainClass {
 	
 	public static void ex03() {
 		
+		/*
+			Buffered Reader의 장점
+			1. 속도가 빠르다.
+			2. readLine 메소드를 사용할 수 있다.
+		*/
+		
 		File dir = new File("C:" + File.separator + "storage");
 		if(dir.exists() == false) {
 			dir.mkdirs();
@@ -135,15 +141,13 @@ public class MainClass {
 		BufferedReader br = null;
 		
 		try {
-			
+			// ★ 매우 중요한 코드임! ★
 			br = new BufferedReader(new FileReader(file));
 			
-			char[] cbuf = new char[5];
-			int readCount = 0;
+			String line = null;
 			StringBuilder sb = new StringBuilder();
-			
-			while((readCount = br.read(cbuf)) != -1) {
-				sb.append(cbuf, 0, readCount);
+			while((line = br.readLine()) != null) {
+				sb.append(line);
 			}
 			
 			System.out.println(sb.toString());
