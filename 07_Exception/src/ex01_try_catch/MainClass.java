@@ -79,7 +79,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 		// 7장 이후 부터가 우선적으로 공부해야할 내용이다.
 	}
 	
