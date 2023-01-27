@@ -146,7 +146,7 @@ public class MainClass {
 			
 			String line = null;
 			StringBuilder sb = new StringBuilder();
-			while((line = br.readLine()) != null) {
+			while((line = br.readLine()) != null) {		// 비어있으면(빈 줄이면) null이 뜸 아마?
 				sb.append(line);
 			}
 			

@@ -313,7 +313,7 @@ public class MainClass {
 	// 문제 6. C:\storage\diary.txt 파일을 C:\storage2\diary.txt 파일로 이동하시오. (복사한 다음에 지우시오.)
 	// 이동에 소요된 시간을 출력하시오.
 	public static void ex06() {
-		
+		/*	내 풀이
 		File file = new File("C:" + File.separator + "storage", "diary.txt");
 		BufferedReader br = null;
 		PrintWriter out = null;
@@ -357,6 +357,45 @@ public class MainClass {
 				e.printStackTrace();
 			}
 		}
+		*/
+		File from = new File("C:" + File.separator + "storage", "diary.txt");		// 복사할 파일
+				
+		File toDir = new File("C:" + File.separator + "storage2");				// 복사 장소
+		if(toDir.exists() == false) {
+			toDir.mkdirs();
+		}
+		File to = new File(toDir, from.getName());		// 복사된 파일
+		
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+		
+		try {
+			
+			long startTime = System.currentTimeMillis();
+
+			br = new BufferedReader(new FileReader(from));	// "C:" + File.separator + "storage", "diary.txt"
+			bw = new BufferedWriter(new FileWriter(to));	// "C:" + File.separator + "storage2", "diary.txt" -> 파일이 생성됨.
+			
+			String line = null;
+			while((line = br.readLine()) != null) {
+				bw.write(line);
+				bw.newLine();
+			}
+			
+			bw.close();	
+			br.close();			// finally 안 쓰고 여기서 clsoe()했네?
+			
+			if(from.length() == to.length()) {  // 복사 성공했다면 삭제  ==> 이 코드 해석이 안 된다.
+				from.deleteOnExit();
+			}
+
+			long stopTime = System.currentTimeMillis();
+			
+			System.out.println("이동에 걸린 시간 : " + (stopTime - startTime) + "밀리초");
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} 
 		
 	}
 	
