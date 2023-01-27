@@ -320,6 +320,8 @@ public class MainClass {
 		
 		try {
 			
+			long nanoTime1 = System.nanoTime();
+			
 			br = new BufferedReader(new FileReader(file));
 			String line = null;
 			StringBuilder sb = new StringBuilder();
@@ -338,9 +340,11 @@ public class MainClass {
 			if(copyFile.exists() == false) {
 				out = new PrintWriter(copyFile);
 				out.println(content);
-			} else {
-				file.delete();
-			} 
+				file.deleteOnExit();
+			}
+			
+			long nanoTime2 = System.nanoTime();
+			System.out.println("작업수행시간 : " + (nanoTime2 - nanoTime1) + "ns");
 		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
