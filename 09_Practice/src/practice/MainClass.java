@@ -385,7 +385,7 @@ public class MainClass {
 			bw.close();	
 			br.close();			// finally 안 쓰고 여기서 clsoe()했네?
 			
-			if(from.length() == to.length()) {  // 복사 성공했다면 삭제  ==> 이 코드 해석이 안 된다.
+			if(from.length() == to.length()) {  // 복사 성공했다면 삭제  ==> 파일 크기를 비교해서 같으면 삭제한다.
 				from.deleteOnExit();
 			}
 
