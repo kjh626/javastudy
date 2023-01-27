@@ -1,7 +1,9 @@
 package practice;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -307,9 +309,56 @@ public class MainClass {
 			
 		}
 	}
+	
+	// 문제 6. C:\storage\diary.txt 파일을 C:\storage2\diary.txt 파일로 이동하시오. (복사한 다음에 지우시오.)
+	// 이동에 소요된 시간을 출력하시오.
+	public static void ex06() {
+		
+		File file = new File("C:" + File.separator + "storage", "diary.txt");
+		BufferedReader br = null;
+		PrintWriter out = null;
+		
+		try {
+			
+			br = new BufferedReader(new FileReader(file));
+			String line = null;
+			StringBuilder sb = new StringBuilder();
+			while((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			String content = sb.toString();
+			System.out.println(content);
+			
+			File dir = new File("C:" + File.separator + "storage2");
+			if(dir.exists() == false) {
+				dir.mkdirs();
+			}
+			File copyFile = new File(dir, "diary.txt");
+			
+			if(copyFile.exists() == false) {
+				out = new PrintWriter(copyFile);
+				out.println(content);
+			} else {
+				file.delete();
+			} 
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			out.close();
+			try {
+				if(br != null) {
+					br.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 		
 	public static void main(String[] args) {
-		ex01();
+		ex06();
 	}
 
 }
