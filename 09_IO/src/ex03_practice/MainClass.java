@@ -1,5 +1,6 @@
 package ex03_practice;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -97,9 +98,44 @@ public class MainClass {
 		
 	}
 	
+	public static void ex03() {
+		
+		File dir = new File("C:" + File.separator + "pracstorage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		
+		File file = new File(dir, "ex03.txt"); 
+		
+		BufferedReader br = null;
+		
+		try {
+			
+			br = new BufferedReader(new FileReader(file));
+			
+			String line = null;
+			StringBuilder sb = new StringBuilder();
+			while((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+
+			System.out.println(sb.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(br != null) {
+					br.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 	}
 
 }
