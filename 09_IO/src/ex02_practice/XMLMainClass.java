@@ -1,5 +1,6 @@
 package ex02_practice;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,11 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -61,6 +67,7 @@ public class XMLMainClass {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document document = builder.newDocument();
+		document.setXmlStandalone(true);
 		
 		// <products> 태그 : Element 생성
 		Element products = document.createElement("products");
@@ -68,19 +75,43 @@ public class XMLMainClass {
 		
 		// productList 순회
 		for(Map<String, Object> map : productList) {
+			
 			// <product> 태그 : Element 생성
 			Element product = document.createElement("product");
-			document.appendChild(products);
+			products.appendChild(product);
 			
 			// <model> 태그 : Element 생성
 			Element model = document.createElement("model");
-			document.appendChild(model);
-			document.setTextContent((String)map.get("model"));
+			product.appendChild(model);
+			model.setTextContent((String)map.get("model"));
 			// <maker> 태그 : Element 생성
-			
+			Element maker = document.createElement("maker");
+			product.appendChild(maker);
+			maker.setTextContent((String)map.get("maker"));
 			// <price> 태그 : Element 생성
-			
+			Element price = document.createElement("price");
+			product.appendChild(price);
+			price.setTextContent((int)map.get("price") + "");
 		}
+		
+		//XML 설정
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+		Transformer transformer = transformerFactory.newTransformer();
+		transformer.setOutputProperty("encoding", "UTF-8");
+		transformer.setOutputProperty("indent", "yes");
+		transformer.setOutputProperty("doctype-public", "yes");
+		
+		// XML 문서 만들기
+		File dir = new File("C:" + File.separator + "pracstorage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		File file = new File(dir, "product.xml");
+		
+		Source source = new DOMSource(document);
+		StreamResult streamResult = new StreamResult(file);
+		transformer.transform(source, streamResult);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
