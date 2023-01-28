@@ -145,6 +145,8 @@ public class MainClass {
 			}
 			
 			long stopTime = System.currentTimeMillis();
+			
+			System.out.println("이동에 걸린 시간 : " + (stopTime - startTime) + "밀리초");
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
