@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class MainClass2 {
 
@@ -102,9 +103,55 @@ public class MainClass2 {
 		
 	}
 	
+	public static void ex04() {
+		
+		File dir = new File("C:" + File.separator + "pracstorage");
+		if(dir.exists() == false) {
+			dir.mkdirs();
+		}
+		File file = new File(dir, "ex04.txt");
+		
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
+			
+			bw.write("반갑습니다.");
+
+			System.out.println("ex04.txt 파일이 생성되었다.");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ex05() {
+		
+		File dir = new File("C:" + File.separator + "pracstorage");
+		if(dir.exists() == false) {
+			dir.mkdir();
+		}
+		File file = new File(dir, "ex05.txt");
+		
+		PrintWriter out = null;
+		
+		try {
+			
+			out = new PrintWriter(file);
+			
+			out.println("안녕하세요.");
+			out.println("반갑습니다.");
+			
+			System.out.println("ex05.txt 파일이 생성되었다.");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			out.close();
+		}
+		
+		
+	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex05();
 	}
 
 }
