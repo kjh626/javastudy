@@ -67,6 +67,19 @@ public class MainClass {
 	// "모", "윷", "도", 10칸 이동한다.
 	public static void ex03() {
 		
+		String[] yut = {"", "도", "개", "걸", "윷", "모"};
+		int totalMove = 0;
+		while (true) {
+			int move = (int)(Math.random() * 5) + 1;
+			System.out.print("\"" + yut[move] + "\"");  // "도"~"모" 출력
+			totalMove += move;
+			if (move <= 3) {
+				System.out.println(", " + totalMove + "칸 이동한다.");
+				break;
+			} else {
+				System.out.print(", ");
+			}
+		}
 	}
 	
 	// 문제4. 0~9 사이 난수를 100개 생성하시오.
@@ -84,6 +97,33 @@ public class MainClass {
 	// 9 : ########### 11
 	public static void ex04() {
 		
+		int[] arr = new int[100];
+		int[] count = new int[10];
+		
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (int)(Math.random() * 10);
+			count[arr[i]]++;
+			System.out.println(count[arr[i]]++);
+		}
+		System.out.println("[1]" + count[0]);
+		System.out.println(count[1]);
+		System.out.println(count[2]);
+		System.out.println(count[3]);
+		System.out.println(count[4]);
+		System.out.println(count[5]);
+		System.out.println(count[6]);
+		System.out.println(count[7]);
+		System.out.println(count[8]);
+		System.out.println(count[9]);
+		
+		for (int i = 0; i < count.length; i++) {
+			StringBuilder sb = new StringBuilder();
+			for (int j = 0; j < count[i]; j++) {
+				sb.append("#");
+			}
+			String graph = sb.toString();
+			System.out.println(i + " : " + graph + " " + count[i]);
+		}
 	}
 	
 	// 문제5. 간단한 성적 관리 프로그램을 구현하시오.
@@ -214,7 +254,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex02();
+		ex04();
 	}
 
 }
