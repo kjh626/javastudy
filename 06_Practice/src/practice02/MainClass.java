@@ -1,5 +1,6 @@
 package practice02;
 
+import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class MainClass {
@@ -148,6 +149,17 @@ public class MainClass {
 	// 상철 70   71   73   214	
 	// 합계 180  183  189  552	
 	public static void ex05() {
+		String[] student = {"정숙", "미희", "상철"};
+		String[] subject = {"국어", "영어", "수학"};
+		
+		int[] totalScore = {0, 0, 0};
+		Scanner sc = new Scanner(System.in);
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 3; j++) {
+			System.out.print(student[i] + "의 " + subject[j] + " 점수 >>> ");
+			int score = sc.nextInt();
+			}
+		}
 		
 	}
 	
@@ -162,7 +174,21 @@ public class MainClass {
 	// 겨울을 영어로 하면? >>> win
 	// 오답
 	public static void ex06() {
-		
+		String[][] season = {{"봄", "spring"},
+							{"여름", "summer"},
+							{"가을", "fall"},
+							{"겨울", "winter"}};
+		Scanner sc = new Scanner(System.in);
+		for(int i = 0; i < season.length; i++) {
+			System.out.print(season[i][0] + "을 영어로 하면? >>> ");
+			String str = sc.next();
+			if(str.equals(season[i][1])) {
+				System.out.println("정답");
+			} else {
+				System.out.println("오답");
+			}
+		}
+		sc.close();
 	}
 	
 	// 문제7. 다음 순서에 따라서 5 x 5 형태의 숫자 빙고판을 자동으로 생성하시오.
@@ -185,7 +211,30 @@ public class MainClass {
 	//  16 22 18 24 23
 
 	public static void ex07() {
+		final int SIZE = 5;
+		int[][] bingo = new int[5][5];
+		for(int i = 0; i < bingo.length; i++) {
+			for(int j = 0; j < bingo[i].length; j++) {
+				bingo[i][j] = (i * 5) + j + 1;
+			}
+		}
 		
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				int x = (int)(Math.random() * SIZE);
+				int y = (int)(Math.random() * SIZE);
+				int temp = bingo[i][j];
+				bingo[i][j] = bingo[x][y];
+				bingo[x][y] = temp;
+			}
+		}
+		for (int i = 0; i < SIZE; i++) {
+			for (int j = 0; j < SIZE; j++) {
+				System.out.print(String.format("%3d", bingo[i][j]));
+			}
+			System.out.println();
+		}
+			
 	}
 	
 	// 문제8. 대문자와 소문자와 숫자로 구성된 인증번호를 만드시오.
@@ -195,7 +244,24 @@ public class MainClass {
 	// 몇 자리의 인증번호를 생성할까요? >>> 6
 	// 생성된 6자리 인증번호는 Fa013b입니다.
 	public static void ex08() {
-		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("몇 자리의 인증번호를 생성할까요? >>> ");
+		int count = sc.nextInt();
+		SecureRandom secureRandom = new SecureRandom();
+		StringBuilder sbCode = new StringBuilder();
+		for(int n = 0; n < count; n++) {
+			double randNumber = secureRandom.nextDouble();
+			if(randNumber < 0.33) {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 26) + 'A'));
+			} else if(randNumber < 0.66) {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 26) + 'a'));
+			} else {
+				sbCode.append((char)((int)(secureRandom.nextDouble() * 10) + '0'));
+			}
+		}
+		String code = sbCode.toString();
+		System.out.println("생성된 " + count + "자리 인증번호는 " + code + "입니다.");
+		sc.close();
 	}
 	
 	// 문제9. 다음 지시시항에 따라 요일을 계산하는 프로그램을 구현하시오.
@@ -221,7 +287,35 @@ public class MainClass {
 	// 년-월-일 입력(2000-01-01) >>> 2023-01-19
 	// 입력된 2023-01-19는 목요일입니다.
 	public static void ex09() {
-		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("년-월-일 입력(2000-01-01) >>> ");
+		String date = sc.next();
+		String[] dateArr = date.split("-");
+		int year = Integer.parseInt(dateArr[0]);
+		int month = Integer.parseInt(dateArr[1]);
+		int day = Integer.parseInt(dateArr[2]);
+		int totalDays = 0;
+		// 년도를 totalDays에 누적
+		for(int y = 1; y < year; y++) {
+			totalDays += 365;
+			if((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) {
+				totalDays++;
+			}
+		}
+		// 월을 totalDays에 누적
+		int[] lastDays = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30};
+		if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			lastDays[2] = 29;
+		}
+		for(int i = 0; i < month; i++) {
+			totalDays += lastDays[i];
+		}
+		// 일을 totalDays에 누적
+		totalDays += day;
+		// 결과
+		String[] weekName = {"일", "월", "화", "수", "목", "금", "토"};
+		System.out.println("입력된 " + date + "는 " + weekName[totalDays % 7] + "요일입니다.");
+		sc.close();
 	}
 	
 	// 문제10. 사용자가 입력한 금액만큼 로또를 구매한다고 가정하고, 완성된 로또 용지를 출력하시오.
@@ -254,7 +348,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex04();
+		ex09();
 	}
 
 }
