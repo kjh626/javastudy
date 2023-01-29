@@ -1,5 +1,7 @@
 package practice02;
 
+import java.util.Scanner;
+
 public class MainClass {
 
 	// 문제1. 통장(balance)에 최초 5000원이 있다.
@@ -37,7 +39,23 @@ public class MainClass {
 	// 입력 >>> 4500
 	// 정답. 총 5번만에 성공.
 	public static void ex02() {
+		int rand = (int)(Math.random() * 10000) + 1;
+		Scanner sc = new Scanner(System.in);
 		
+		int count = 0;
+		int en = 0;
+		do {
+			System.out.print("입력 >>> ");
+			en = sc.nextInt();
+			if(rand > en) {
+				System.out.println("Up!");
+			} else if(rand < en) {
+				System.out.println("Down");
+			}
+			count++;
+		} while(rand != en);
+		
+		System.out.println("정답. 총 " + count + "번 만에 성공.");
 	}
 	
 	// 문제3. 자동으로 진행되는 윷 던지기를 구현하시오. 윷이나 모가 나오면 추가로 던지시오.
@@ -196,7 +214,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex01();
+		ex02();
 	}
 
 }
