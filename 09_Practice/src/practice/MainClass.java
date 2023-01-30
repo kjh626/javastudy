@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -439,15 +437,35 @@ public class MainClass {
 		
 	}
 	
-	// 문제 8. "안녕하세요 반갑습니다" 문장 1개를 출력하시오.
-	// C:\storage\ex08.bin 파일
-	// DataInputStream/DataOutputStream을 사용하시오.
+	// 문제 8. 키보드로부터 하나의 문장을 입력 받은 뒤 C:\storage\ex08.txt 파일에 출력하시오.
+	// Scanner와 DataOutputStream을 사용하시오.
 	public static void ex08() {
 		
-		File file = new File("C:" + File.separator + "storage", "ex08.bin");
-		
+		Scanner sc = new Scanner(System.in);
 		DataOutputStream dos = null;
-		DataInputStream dis = null;
+		
+		try {
+			
+			dos = new DataOutputStream(new FileOutputStream(new File("C:" + File.separator + "storage", "ex08.txt")));	// 파일 선언 없이 한번에 해봄.
+			
+			System.out.print("문장 입력 >>> ");
+			String sentence = sc.nextLine();
+			
+			dos.writeUTF(sentence);
+			
+			sc.close(); 	// 안 해도 되는건데, 안 쓰면 경고메시지 뜨니까 기분나빠서 써준다.
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(dos != null) {
+					dos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	
@@ -489,7 +507,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex09();
+		ex08();
 	}
 
 }

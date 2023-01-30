@@ -185,7 +185,7 @@ public class MainClass {
 			person.setHeight(170.5);
 			person.setAlive(false);
 			
-			// 출력 => 직렬화가 필요하다.
+			// 출력 => 직렬화(Serialize)가 필요하다.
 			oos.writeObject(people);
 			oos.writeObject(person);
 			
