@@ -2,7 +2,7 @@ package ex04_practice;
 
 import java.io.Serializable;
 
-public class Person implements Serializable{
+public class Person implements Serializable {
 
 	private static final long serialVersionUID = -3126190170465340502L;
 	private String name;
@@ -13,7 +13,6 @@ public class Person implements Serializable{
 	public Person() {
 		
 	}
-	
 	
 	public Person(String name, int age, double height, boolean isAlive) {
 		super();

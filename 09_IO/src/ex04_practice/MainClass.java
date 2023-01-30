@@ -78,7 +78,7 @@ public class MainClass {
 	
 	public static void ex03() {
 		
-		File dir = new File("C:" + File.separator + "storage");
+		File dir = new File("C:" + File.separator + "pracstorage");
 		File file = new File(dir, "ex03.bin");
 		
 		BufferedOutputStream bos = null;
@@ -107,7 +107,7 @@ public class MainClass {
 	
 	public static void ex04() {
 		
-		File dir = new File("C:" + File.separator + "storage");
+		File dir = new File("C:" + File.separator + "pracstorage");
 		File file = new File(dir, "ex04.dat");
 		
 		DataOutputStream dos = null;
@@ -145,7 +145,7 @@ public class MainClass {
 	
 	public static void ex05() {
 		
-		File dir = new File("C:" + File.separator + "storage");
+		File dir = new File("C:" + File.separator + "pracstorage");
 		File file = new File(dir, "ex05.dat");
 		
 		ObjectOutputStream oos = null;
