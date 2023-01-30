@@ -60,7 +60,7 @@ public class MainClass {
 			StringBuilder sb = new StringBuilder();
 			
 			while((readByte = fis.read(b)) != -1) {
-				sb.append(new String(b, 0, readByte));
+				sb.append(new String(b, 0, readByte));	// new String 해주는 이유??
 			}
 			
 			System.out.println(sb.toString());
@@ -224,6 +224,7 @@ public class MainClass {
 			
 			ois = new ObjectInputStream(new FileInputStream(file));
 			
+			// 이거 순서 바꾸면 왜 안 되지?
 			List<Person> people = (List<Person>)ois.readObject();
 			Person person = (Person)ois.readObject();
 			
