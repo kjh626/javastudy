@@ -140,10 +140,10 @@ public class MainClass {
 			boolean isAlive = true;
 			
 			// 출력(변수 타입에 따라서 메소드가 다름)
-			dos.writeUTF(name);
-			dos.writeInt(age);
-			dos.writeDouble(height);
-			dos.writeBoolean(isAlive);
+			dos.writeUTF(name);		// 9바이트
+			dos.writeInt(age);		// 4바이트
+			dos.writeDouble(height);// 8바이트
+			dos.writeBoolean(isAlive);	// 3바이트
 			
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -206,7 +206,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex05();
+		ex04();
 	}
 	
 }

@@ -13,7 +13,7 @@ import java.io.Serializable;
 */
 public class Person implements Serializable {
 	
-	private static final long serialVersionUID = 7033755836244474051L;	// class Person에서 경고메시지 에서 generate 하면 된다.
+	private static final long serialVersionUID = 7033755836244474051L;	// public class Person에서 경고메시지 에서 generate 하면 된다.
 	// 객체 생성 위해서 준비하는 과정
 	private String name;
 	private int age;
@@ -62,6 +62,11 @@ public class Person implements Serializable {
 
 	public void setAlive(boolean isAlive) {
 		this.isAlive = isAlive;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", height=" + height + ", isAlive=" + isAlive + "]";
 	}
 	
 	
