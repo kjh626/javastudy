@@ -177,6 +177,25 @@ public class MainClass {
 		
 	}
 	
+	public static void ex05() {
+		
+		String data = "한글 english 12345 !@#$+-";
+		
+		try {
+			
+			// 인코딩
+			String encodeData = URLEncoder.encode(data, "UTF-8");
+			System.out.println(encodeData);
+			
+			// 디코딩
+			String decodeData = URLDecoder.decode(data, "UTF-8");
+			System.out.println(decodeData);
+			
+		} catch(UnsupportedEncodingException e) {
+			System.out.println("인코딩 실패");
+		}
+		
+	}
 	
 	public static void ex06() {
 		
@@ -229,7 +248,7 @@ public class MainClass {
 	
 	
 	public static void main(String[] args) {
-		ex06();
+		ex05();
 	}
 
 }
