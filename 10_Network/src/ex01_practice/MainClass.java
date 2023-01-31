@@ -178,31 +178,6 @@ public class MainClass {
 	}
 	
 	
-	public static void ex05() {
-		// 한글 주소 그대로 가져올 수 없다. 인코딩해서 써야한다.(UTF-8로)
-		// 주소에서 한글 같은 거 깨지지 말라고 인코딩해주는 것이다. 인코딩한 주소를 받는 쪽이 알아서 디코딩한다. (우리는 디코딩은 별로 할 일이 없다.)
-		/*
-			인코딩(암호화) : 원본 데이터를 UTF-8 방식으로 암호화
-			디코딩(복호화) : UTF-8 방식으로 암호화된 데이터를 복원 
-		*/
-		
-		String data = "한글 english 12345 !@#$+-";
-		
-		try {
-			
-			// 인코딩
-			String encodeData = URLEncoder.encode(data, "UTF-8");
-			System.out.println(encodeData); 	// 공백자리 +로 표시됨.
-			
-			// 디코딩
-			String decodeData = URLDecoder.decode(encodeData, "UTF-8");	// 다시 원상복구시킨다.
-			System.out.println(decodeData);
-			
-		} catch(UnsupportedEncodingException e) {
-			System.out.println("인코딩 실패");
-		}
-	}
-	
 	public static void ex06() {
 		
 		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
