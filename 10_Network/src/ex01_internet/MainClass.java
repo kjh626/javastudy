@@ -1,6 +1,9 @@
 package ex01_internet;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -78,7 +81,7 @@ public class MainClass {
 			
 			// 요청 방식(요청 메소드)
 			String requestMethod = con.getRequestMethod();
-			System.out.println("요청 방식 : " + requestMethod);		// GET => 데이터의 요청을 주소창으로 할게.. 
+			System.out.println("요청 방식 : " + requestMethod);		// GET => 데이터의 요청을 주소창으로 할게.. 라는 뜻 
 			
 			// 컨텐트 타입 -> 우리가 손으로 쓰는 것이다.
 			String contentType = con.getContentType();				// 웹 상으로 주고받는 데이터의 타입( 자바에서의 int, double 같은
@@ -92,6 +95,9 @@ public class MainClass {
 			System.out.println("Referer : " + referer);   // 이전 주소가 나옴.(새주소 말고 요청 전의 주소) => 로그인하면 직전 페이지가 열린다. / 로그인했는데 첫페이지 돌아가는 사이트도 있다.(짜증난다. 질이 떨어진다)
 			// 네이버는 리퍼러값 사용하진 않은 거 같고 네가 돌아갈 곳은 ~~~구나 하고 직접 파라미터를 넘겨주는 방식으로 처리함.(네이버의 방식)
 			
+			// 접속 종료(생략해도 된다. 명시하는 것이 좋다)
+			con.disconnect();
+			
 		} catch(MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
 		} catch(IOException e) {
@@ -99,8 +105,56 @@ public class MainClass {
 		}
 	}
 	
+	public static void ex03() {
+		// Daum 로고의 이미지 주소
+		// 우리가 원하는 것은 다운로드(데이터를 받을 Stream이 필요 => InputStream(바이트 단위로 읽어들이는 입력스트림)
+		String apiURL = "https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		InputStream in = null;			// Daum 로그를 읽어 들이는 입력 스트림
+		FileOutputStream out = null;	// C:\storage\daum.png 로 내보내는 출력 스트림
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection)url.openConnection();
+			
+			int reponseCode = con.getResponseCode();
+			if(reponseCode == HttpURLConnection.HTTP_OK) {	// 접속되었다면. 이라는 뜻 => 접속되었다면 작업을 수행하겠다.
+				
+				in = con.getInputStream();		// 우리는 Java에 있다. con을 통해 daum이미지URL에 접속을 했다 -> 데이터를 읽어들일 con.getInputStream()
+				out = new FileOutputStream("C:" + File.separator + "storage" + File.separator + "daum.png");	// File클래스 없이 작업함. 여기에는 ,(쉼표) 없다.
+				
+				byte[] b = new byte[10];		// 10바이트씩 읽을 준비
+				int readByte = 0;		// 10바이트 읽기로 했지만 실제로는 아닐 수도 있기 때문에 readByte가 필요함
+				// 읽을 준비 완료
+				// 10바이트 받아서 10바이트 storage\daum.png로 보낸다. 를 무한 루프하면 된다. => 전에 했던 파일복사 코드
+				
+				// 스트림 2개 준비완료.(in입력, out출력)
+				while((readByte = in.read(b)) != -1) {
+					out.write(b, 0, readByte);
+				}
+				
+				System.out.println("다운로드 완료");
+				
+				out.close();
+				in.close();  // 코드 집중을 위해서 여기서 닫겠음.
+				con.disconnect();
+				
+			}
+			
+		} catch (MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch (IOException e) {
+			// 접속 실패 또는 스트링 관련 오류 (2가지가 뜰것)
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
-		ex02();
+		ex03();
 	}
 
 }
