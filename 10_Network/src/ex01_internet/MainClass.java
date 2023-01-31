@@ -2,8 +2,10 @@ package ex01_internet;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -153,8 +155,64 @@ public class MainClass {
 		
 	}
 	
+	// ★문서 내려받기★ <= 이게 더 중요함
+	public static void ex04() {
+		
+		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		// 텍스트니까 글자단위로 읽어올 수 있어야 한다. => Reader가 필요
+		// 그러나 커넥션은 Reader, Writer를 제공하지 않는다. => input ★문자스트림으로 바꾸려면! InputStreamReader를 써야됨.★
+		
+		InputStreamReader reader = null;
+		FileWriter writer = null;
+		
+		File file = new File("C:" + File.separator + "storage", "다운로드문서.txt");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				reader = new InputStreamReader(con.getInputStream());	// InputStreamReader는 바이트 기반의 스트림을 받아야 한다. con.getInputStream()은 바이트 기반의 스트림. 을 제공하면 된다.
+			} else {
+				reader = new InputStreamReader(con.getErrorStream());	// Error 스트림은 콘솔창에 빨간색으로 나온다.(정상스트림(검정색), 에러스트림)
+			}
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf = new char[2];    // 글자는 2글자씩 옮기는 걸로 하자.
+			int readCount = 0;
+			
+			while((readCount = reader.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);		// 읽어들인 글자수만큼만 내보내겠다. // 현재 읽어들인 모든 내용은 sb에 저장되어 있다.
+			}
+			
+			writer = new FileWriter(file);
+			writer.write(sb.toString());
+			
+			writer.close();
+			reader.close();
+			con.disconnect();
+			
+			System.out.println("다운로드 완료");
+			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		// 선생님 github에는 다운로드 실패하게끔 url 수정하고
+		// 성공했을 때, 실패했을 때 파일 다르게 생성하게 만들어줌.
+		
+	}
+	
+	
 	public static void main(String[] args) {
-		ex03();
+		ex04();
 	}
 
 }

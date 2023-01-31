@@ -2,14 +2,35 @@ package ex01_practice;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainClass {
+	
+	public static void ex01() {
+		
+		String apiURL = "https://search.naver.com/search.naver?query=삼성전자";
+		URL url = null;
+		
+		try {
+			url = new URL(apiURL);
+			
+			System.out.println("프로토콜 : " + url.getProtocol());
+			System.out.println("호스트   : " + url.getHost());
+			System.out.println("파라미터 : " + url.getQuery());
+			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		}
+	}
 	
 	public static void ex02() {
 		
@@ -35,6 +56,21 @@ public class MainClass {
 			// 요청 방식(요청 메소드)
 			String requestMethod = con.getRequestMethod();
 			System.out.println("요청 방식 : " + requestMethod);
+			
+			// 컨텐트 타입
+			String contentType = con.getContentType();
+			System.out.println("컨텐트 타입 : " + contentType);
+			
+			// 요청 헤더
+			String userAgent = con.getRequestProperty("User-Agent");
+			System.out.println("User-Agent : " + userAgent);
+			
+			// 리퍼러
+			String referer = con.getRequestProperty("Referer");
+			System.out.println("Referer : " + referer);
+			
+			// 접속 종료
+			con.disconnect();
 			
 		} catch(MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
@@ -84,7 +120,52 @@ public class MainClass {
 				
 			}
 			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ex04() {
+		// Buffered 사용해서 해보기
+		// BufferedReader 썼기 때문에 readLine()가능함
+		String apiURL = "https://gdlms.cafe24.com/uflist/curri/10004/bbs/68_63d8848f7d506.txt";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		BufferedReader reader = null;
+		BufferedWriter writer = null;
+		
+		File file = new File("C:" + File.separator + "pracstorage", "연습다운로드문서.txt");
+		
+		try {
 			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			} else {
+				reader = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			
+			while((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			
+			writer = new BufferedWriter(new FileWriter(file));
+			writer.write(sb.toString());
+			
+			writer.close();
+			reader.close();
+			con.disconnect();
+			
+			System.out.println("다운 완료");
 		} catch(MalformedURLException e) {
 			System.out.println("apiURL 주소 오류");
 		} catch(IOException e) {
@@ -94,7 +175,7 @@ public class MainClass {
 	}
 	
 	public static void main(String[] args) {
-		ex03();
+		ex04();
 	}
 
 }
