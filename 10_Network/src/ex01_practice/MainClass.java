@@ -203,9 +203,58 @@ public class MainClass {
 		}
 	}
 	
+	public static void ex06() {
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		InputStreamReader reader = null;
+		FileWriter writer = null;
+		
+		File file = new File("C:" + File.separator + "pracstorage", "sfc_web_map.xml");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				reader = new InputStreamReader(con.getInputStream());
+			} else {
+				reader = new InputStreamReader(con.getErrorStream());
+			}
+			
+			char[] c = new char[3];
+			StringBuilder sb = new StringBuilder();
+			int readCount = 0;
+			while((readCount = reader.read(c)) != -1) {
+				sb.append(c, 0, readCount);
+			}
+			
+			writer = new FileWriter(file);
+			writer.write(sb.toString());
+			
+			reader.close();
+			writer.close();
+			con.disconnect();
+			
+			
+			System.out.println("다운로드 완료");
+			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	
 	public static void main(String[] args) {
-		ex05();
+		ex06();
 	}
 
 }
