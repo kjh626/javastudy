@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-// 중요한 것은 ex01_internet 이다. 1번은 써야된다. (2번 덜중요)
+// 중요한 것은 ex01_internet 이다. 1번은 써야된다. (ex02번 덜중요)
 public class MainClass {
 
 	/*
