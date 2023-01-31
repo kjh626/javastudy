@@ -212,9 +212,66 @@ public class MainClass {
 		
 	}
 	
+	public static void ex06() {		// 연습
+		
+		// 1시간마다 갱신되는 전국 날씨 정보(텍스트로 이루어진 파일)
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+		// storage\sfc_web_map.xml로 다운로드 받기
+		URL url = null;
+		HttpURLConnection con = null;
+		
+		InputStreamReader isr = null;
+		FileWriter fw = null;
+
+		File file = new File("C:" + File.separator + "storage", "sfc_web_map.xml");
+		
+		try {
+			
+			url = new URL(apiURL);
+			con = (HttpURLConnection) url.openConnection();
+			
+			int responseCode = con.getResponseCode();
+			if(responseCode == HttpURLConnection.HTTP_OK) {
+				isr = new InputStreamReader(con.getInputStream());
+			} else {
+				isr = new InputStreamReader(con.getErrorStream());
+			}
+			
+			StringBuilder sb = new StringBuilder();
+			char[] cbuf = new char[10];
+			int readCount = 0;
+			while((readCount = isr.read(cbuf)) != -1) {
+				sb.append(cbuf, 0, readCount);
+			}
+			
+			fw = new FileWriter(file);
+			fw.write(sb.toString());
+			
+			fw.close();
+			isr.close();
+			con.disconnect();
+			
+			System.out.println("다운 완료");
+			
+		} catch(MalformedURLException e) {
+			System.out.println("apiURL 주소 오류");
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void ex06_buffered() {
+		
+		String apiURL = "http://www.kma.go.kr/XML/weather/sfc_web_map.xml";
+		
+	}
+	
+	
 	
 	public static void main(String[] args) {
-		ex04();
+		ex06();
 	}
 
 }
