@@ -121,25 +121,19 @@ public class JSONMainClass {
 			con.disconnect();
 			
 			System.out.println(sb.toString());
-			JSONObject obj = new JSONObject(sb.toString());
-			JSONObject body = obj.getJSONObject("response").getJSONObject("body");
-			JSONArray items = body.getJSONArray("items");
+			// 한번에 한줄로 길게 썼다.(메소드 체이닝)
+			JSONArray items = new JSONObject(sb.toString())
+								.getJSONObject("response")
+								.getJSONObject("body")
+								.getJSONArray("items");
+
 			for(int i = 0; i < items.length(); i++) {
 				JSONObject item = items.getJSONObject(i);
-				String frcstOneDt = item.getString("frcstOneDt");
-				String frcstTwoDt = item.getString("frcstTwoDt");
-				String frcstThreeDt = item.getString("frcstThreeDt");
-				String frcstFourDt = item.getString("frcstFourDt");
-
-				String frcstOneCn = item.getString("frcstOneCn");
-				String frcstTwoCn = item.getString("frcstTwoCn");
-				String frcstThreeCn = item.getString("frcstThreeCn");
-				String frcstFourCn = item.getString("frcstFourCn");
 				
-				System.out.println(frcstOneDt + " 예보 : " + frcstOneCn);
-				System.out.println(frcstTwoDt + " 예보 : " + frcstTwoCn);
-				System.out.println(frcstThreeDt + " 예보 : " + frcstThreeCn);
-				System.out.println(frcstFourDt + " 예보 : " + frcstFourCn);
+				System.out.println(item.getString("frcstOneDt") + " : " + item.getString("frcstOneCn"));
+				System.out.println(item.getString("frcstTwoDt") + " : " + item.getString("frcstTwoCn"));
+				System.out.println(item.getString("frcstThreeDt") + " : " + item.getString("frcstThreeCn"));
+				System.out.println(item.getString("frcstFourDt") + " : " + item.getString("frcstFourCn"));
 			}
 			
 		} catch (Exception e) {
