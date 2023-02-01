@@ -143,6 +143,8 @@ public class JSONMainClass {
 		
 	}
 	
+	// postman 구글에 검색 후 다운로드 windows 64-bit용으로
+	
 	public static void main(String[] args) {
 		ex02();
 	}
