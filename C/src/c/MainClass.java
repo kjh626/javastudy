@@ -105,7 +105,7 @@ public class MainClass {
 		map.put("Service-Key", "aikrbgbdsfk");
 		map.put("Content-Type", "application/xml");
 		
-		// 그냥 get메소드로 map에서 꺼내기 => get메소드! / entryset으로 하는 것도 있고 get메소드로 직접 꺼내는 경우도 있다.
+		// 그냥 get메소드로 map에서 꺼내기 => get메소드! / entrySet으로 하는 것도 있고 get메소드로 직접 꺼내는 경우도 있다.
 		System.out.println(map.get("Service-Key"));
 		System.out.println(map.get("Content-Type"));
 		
