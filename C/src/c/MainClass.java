@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class MainClass {
@@ -126,7 +125,7 @@ public class MainClass {
 
 		}
 		*/
-		for( Entry<String, Object> entry : map.entrySet() ) {
+		for( Entry<String, Object> entry : map.entrySet() ) { // entrySet() 메소드의 반환타입이 Entry< , > 임.
 			System.out.println(entry.getKey() + " : " + entry.getValue());
 		}
 		
