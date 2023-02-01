@@ -117,7 +117,7 @@ public class MainClass {
 
 	public static void ex05(Map<String, Object> map) {
 		// map에 있는 내용을 하나씩 꺼내서 출력하려고 한다.
-		// 맵은 하나의 데이터(다 붙어있다 생각) -> entrySet을 통해 분할을 해준다. 그리고 그걸 Set에 저장한다.
+		// 맵은 하나의 데이터(다 붙어있다 생각, 엔트리들이 모두 붙어있다.) -> entrySet을 통해 분할을 해준다. 그리고 그걸 Set에 저장한다.
 		// => for문 써야 함.
 
 		/* 풀어서 쓰자면
