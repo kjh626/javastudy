@@ -8,7 +8,7 @@ public class MainClass2 {
 		
 		try {
 			gun.reload(8);
-			for(int n = 0; n < 11; n++) {
+			for(int n = 0; n < 10; n++) {
 				System.out.println(gun.getBullet());
 				gun.shoot();
 			}
