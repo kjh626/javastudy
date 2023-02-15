@@ -1,8 +1,12 @@
 package ex01_connection;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class MainClass {
 
@@ -51,8 +55,72 @@ public class MainClass {
 		// 원래는 ex01,02 같이 해야 하는 것임.
 	}
 	
+	public static void ex03() {
+		
+		BufferedReader reader = null;
+		Connection con = null;
+		
+		try {
+			
+			// 프로퍼티 파일 읽는 문자 입력 스트림 생성하기
+			reader = new BufferedReader(new FileReader("db.properties")); // String으로 파일 전달해도 괜찮
+
+			// 프로퍼티 파일을 읽어서 프로퍼티 객체 생성하기
+			Properties properties = new Properties(); 	// reader값을 받는 생성자는 없음
+			properties.load(reader); // load()에서 reader 넣어줄 수 있다.
+			
+			// 프로퍼티 객체에 저장된 각 property 읽기 (지금 property 2개 있다. 두 개 이름은 user, password)
+			String url = properties.getProperty("url");
+			String user = properties.getProperty("user");
+			String password = properties.getProperty("password");
+			
+			// DriverManager로부터 Connection 객체 얻기
+			con = DriverManager.getConnection(url, user, password); // 찢어 넣어라
+			System.out.println("DB에 접속되었습니다.");
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		} catch(SQLException e) { // 실제로 개발할 때는 그냥 Exception으로 받으면 됨.
+			e.printStackTrace();
+		} finally{ 
+			try {
+				if(con != null) {
+					con.close();
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		// 위의 try catch는 git으로 올려도 상관 없어 뵌다.
+		
+	}
+	
+	// 핵심은 forname, DriverManager.getConnection 이 두 가지 이다.
+	public static Connection getConnection() {
+		// getConnection()만 호출하면 나에게 커넥션이 오는거다.
+		Connection con = null;
+		
+		try {
+			
+			Class.forName("oracle.jdbc.OracleDriver");
+			
+			Properties properties = new Properties();
+			properties.load(new BufferedReader(new FileReader("db.properties")));
+			
+			con = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("password"));
+			
+		} catch(Exception e) {    // ClassNotFoundException, SQLException, IOException
+			e.printStackTrace();
+		} 
+		  // con 닫고 주면 안 된다. 닫는 거는 메소드를 따로 만들어줘야 한다.
+		
+		return con;    // 가져가라는 의미.
+	}
+	
 	public static void main(String[] args) {
-		ex02();
+		Connection con = getConnection();
+		System.out.println("DB에 접속되었습니다.");
+		
 	}
 
 }
