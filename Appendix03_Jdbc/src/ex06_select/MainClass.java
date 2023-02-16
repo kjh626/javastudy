@@ -67,10 +67,9 @@ public class MainClass {
 			System.out.println(member);
 			
 			/*
-		 		|  MEMBER_NO  |   ID   |  NAME  |  ADDRESSS  |  JOIN_DATE  |   최초 rs가 가리키는 위치 : 없음
-		 		|      1      | admin  | 관리자 |   서울     |   23/02/15  |   ← 첫 번째 rs.next() 호출한 경우
-		 		|      2      | master | 운영자 |   경기     |   23/02/16  |   ← 두 번째 rs.next() 호출한 경우
-		 																	   ← 세 번째 rs.next() 호출한 경우 결과가 없으므로 false가 반환.
+		 		|  MEMBER_NO  |   ID   |  NAME  |  ADDRESS  |  JOIN_DATE  |  최초 rs가 가리키는 위치 : 없음 
+				|     2       | master | 운영자 |   경기    |   23/02/16  |  ← 첫 번째 rs.next() 호출한 경우
+				                                                             ← 두 번째 rs.next() 호출한 경우 결과가 없으므로 false가 반환
 		 		
 		 		1. ResultSet rs 객체는 하나의 행(Row)을 가리키는 포인터 역할이다.(진짜로 저런 행 데이터를 저장하고 있는 게 아니라 데이터를 찾아갈 수 있게 해주는 포인터 역할 수행)
 		 		2. next 메소드를 통해서 각 행(Row)을 가리킬 수 있다. (1번에 한 줄씩 조회할 수 있다.)
@@ -155,6 +154,13 @@ public class MainClass {
 			for(int i = 0; i < memberList.size(); i++) {
 				System.out.println(memberList.get(i));
 			}
+			
+			/*
+			|  MEMBER_NO  |   ID   |  NAME  |  ADDRESS  |  JOIN_DATE  | 
+			|     1       | admin  | 관리자 |   서울    |   23/02/15  |  ← 첫 번째 rs.next() 호출한 경우
+			|     2       | master | 운영자 |   경기    |   23/02/16  |  ← 두 번째 rs.next() 호출한 경우
+			                                                             ← 세 번째 rs.next() 호출한 경우 결과가 없으므로 false가 반환
+			 */
 			
 		} catch (Exception e) {
 			e.printStackTrace();
