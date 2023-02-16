@@ -63,7 +63,7 @@ public class MainClass {
 				
 			}
 			// ※ if문이 종료된 뒤, member가 null이라면 조회된 결과가 없었다는 의미가 된다.
-			// 	  없을 때를 대비해서! 그래서 선언과 생성을 분리해서 적어줘야 한다. 
+			// 	  없을 때를 대비해서! (그래서) 선언과 생성을 분리해서 적어줘야 한다. 
 			System.out.println(member);
 			
 			/*
