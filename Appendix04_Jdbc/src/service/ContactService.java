@@ -1,17 +1,8 @@
 package service;
 
-import dao.ContactDAO;
-
-public class ContactService {
-
-	// 서비스는 다오를 불러서 그 작업을 호출해줘야 한다.
-	// ContactDAO 객체를 필드로 선언해 보자.
-	private ContactDAO dao = ContactDAO.getInstance();   // 현재 dao는 없음.
-	
-	public void 목록서비스() {
-		
-		dao.목록보기();
-		
-	}
+public interface ContactService {
+	// 여기에서는 DB친화적인 이름 안 줘도 됨. 사용자 친화적인 이름을 주면 된다.
+	// 인터페이스에는 이런 메소드가 있어하고 적는 거
+	public void addContact();
 	
 }
