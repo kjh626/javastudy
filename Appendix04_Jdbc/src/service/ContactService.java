@@ -7,4 +7,5 @@ public interface ContactService {
 	public void removeContact();
 	public void modifyContact();
 	public void findContactsByName();
+	public void findAllContacts();
 }

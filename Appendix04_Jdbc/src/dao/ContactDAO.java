@@ -235,4 +235,42 @@ public class ContactDAO {
 		
 		return contact;		// null값이 반환되는 경우도 있다.
 	}
+	
+	// CRUD 메소드 - 6 (전체 연락처 조회하기)
+	// 1. 반환값   : List<ContactDTO>  // contactDTO가 연락처 하나의 정보,,
+	// 2. 매개변수 : 없다.
+	public List<ContactDTO> selectAllContacts() {
+	
+		List<ContactDTO> contactList = new ArrayList<ContactDTO>();
+		
+		try {
+			
+			con = getConnection();
+			sql =  "SELECT CONTACT_NO, NAME, TEL, EMAIL, ADDRESS";
+			sql += "  FROM CONTACT_TBL";
+			sql += " ORDER BY CONTACT_NO DESC";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+				ContactDTO contact = new ContactDTO();   // rs.get으로 한 행의 데이터를 하나하나씩 가져오고 여기 하나의 객체(contact)에 저장.
+				contact.setContact_no( rs.getInt("CONTACT_NO"));
+				contact.setName( rs.getString("name"));
+				contact.setTel( rs.getString("TEL"));
+				contact.setEmail( rs.getString("EMAIL"));
+				contact.setAddress( rs.getString("ADDRESS"));
+								
+				contactList.add(contact);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+		return contactList;
+		
+	}
 }

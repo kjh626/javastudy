@@ -136,5 +136,14 @@ public class ContactServiceImpl implements ContactService {
 		
 	}
 	
+	@Override
+	public void findAllContacts() {
+		
+		System.out.println("===== 전체 연락처 목록 =====");
+		for(ContactDTO contact : dao.selectAllContacts()) {    // dao.selectAllContacts() 이게 arraylist를 반환한다. 그래서 이걸 arraylist라고 생각하면 된다.
+			System.out.println(contact);
+		}
+		
+	}
 	
 }
