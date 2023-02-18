@@ -256,7 +256,7 @@ public class ContactDAO {
 				
 				ContactDTO contact = new ContactDTO();   // rs.get으로 한 행의 데이터를 하나하나씩 가져오고 여기 하나의 객체(contact)에 저장.
 				contact.setContact_no( rs.getInt("CONTACT_NO"));
-				contact.setName( rs.getString("name"));
+				contact.setName( rs.getString("NAME"));
 				contact.setTel( rs.getString("TEL"));
 				contact.setEmail( rs.getString("EMAIL"));
 				contact.setAddress( rs.getString("ADDRESS"));

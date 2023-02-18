@@ -2,7 +2,7 @@ package service;
 
 public interface ContactService {
 	
-	public void addcContact();
+	public void addContact();
 	public void removeContact();
 	public void modifyContact();
 	public void findContactsByName();

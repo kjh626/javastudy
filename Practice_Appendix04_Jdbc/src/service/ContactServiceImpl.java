@@ -20,7 +20,7 @@ public class ContactServiceImpl implements ContactService {
 	
 	/***** 3. method *****/
 	@Override
-	public void addcContact() {
+	public void addContact() {
 		
 		System.out.println("===== 연락처 추가하기 =====");
 		
@@ -127,6 +127,15 @@ public class ContactServiceImpl implements ContactService {
 			System.out.println(contact);
 		}
 		
+	}
+	
+	@Override
+	public void findAllContacts() {
+
+		System.out.println("===== 전체 연락처 목록 =====");
+		for(ContactDTO contact : dao.selectAllContacts()) {
+			System.out.println(contact);
+		}
 	}
 	
 }
