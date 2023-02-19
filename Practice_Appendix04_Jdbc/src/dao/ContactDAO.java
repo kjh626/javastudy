@@ -37,7 +37,7 @@ public class ContactDAO {
 		
 		try {
 			
-			Class.forName("oralce.jdbd.OracleDriver");
+			Class.forName("oracle.jdbc.OracleDriver");
 			
 			Properties p = new Properties();
 			p.load(new BufferedReader(new FileReader("db.properties")));
