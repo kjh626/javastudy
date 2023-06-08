@@ -1,4 +1,4 @@
-package ex01_lambda.ch01;
+package ex02_lambda.ch01;
 
 public class MainClass {
 

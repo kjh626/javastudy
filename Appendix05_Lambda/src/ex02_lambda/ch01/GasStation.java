@@ -1,4 +1,4 @@
-package ex01_lambda.ch03;
+package ex02_lambda.ch01;
 
 public class GasStation {
 	
@@ -7,14 +7,14 @@ public class GasStation {
 	private int payPerLiter = 2000;
 	private int earning = 0;
 	
-	// 메소드의 지역 변수(매개변수는 지역변수의 일종)로 익명 객체 처리하기
-	//   기름을 판매하는 sellOil 메소드를 만들고,
-	//   Car 객체를 매개변수로 선언해서 처리하는 방식
-	public void sellOil(Car car) {
-		car.addOil();
-	}
-	
-	
+	// field (Car) : 익명 객체를 field에 저장하기
+	private Car car = () -> {
+			int oil = 10;
+			totalOil -= oil;
+			earning += oil * payPerLiter;
+			System.out.println("기름 넣기 완료");
+		};
+
 	public int getTotalOil() {
 		return totalOil;
 	}
@@ -32,6 +32,12 @@ public class GasStation {
 	}
 	public void setEarning(int earning) {
 		this.earning = earning;
+	}
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
 	}
 
 

@@ -1,4 +1,4 @@
-package ex01_lambda.ch01;
+package ex02_lambda.ch02;
 
 public class GasStation {
 	
@@ -7,14 +7,25 @@ public class GasStation {
 	private int payPerLiter = 2000;
 	private int earning = 0;
 	
-	// field (Car) : 익명 객체를 field에 저장하기
-	private Car car = () -> {
-			int oil = 10;
+	public void sellOil(String model, int oil) {
+		
+		// sellOil 메소드의 지역변수 Car car 선언
+		Car car;
+		
+		// 익명 객체를 이용해서 지역변수 car의 객체 생성
+		car = () -> {
 			totalOil -= oil;
 			earning += oil * payPerLiter;
-			System.out.println("기름 넣기 완료");
+			System.out.println(model + " 차량 기름 넣기 완료");
 		};
-
+		
+		// sellOil 메소드 호출이 종료되면 car 객체는 사라지기 때문에,
+		// sellOil 메소드 내부에서 car 객체의 addOil 메소드를 호출해야 한다.
+		car.addOil();
+		
+	}
+	
+	
 	public int getTotalOil() {
 		return totalOil;
 	}
@@ -32,12 +43,6 @@ public class GasStation {
 	}
 	public void setEarning(int earning) {
 		this.earning = earning;
-	}
-	public Car getCar() {
-		return car;
-	}
-	public void setCar(Car car) {
-		this.car = car;
 	}
 
 
