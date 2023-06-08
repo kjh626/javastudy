@@ -14,9 +14,10 @@ public class MainClass {
 		MyInterface myInterface2 = (a) -> a * a ;
 		System.out.println(myInterface2.method(n));
 		
-		//인터페이스 애초에 만들어져 있다 (4개 정도?)
+		// 함수형 인터페이스 애초에 만들어져 있다 (5개 정도?)
 		// 공급자와 소비자 supplier~~ 
 		// 펑션, 프레디케이
+		// Consumer, Supplier, Function, Operator, Predicate
 	}
 
 }
